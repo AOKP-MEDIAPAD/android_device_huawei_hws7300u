@@ -65,3 +65,8 @@ persist.timed.enable=true
 
 # MTP on default
 persist.sys.usb.config=mtp,adb
+
+
+# notify vold we have internal and external sd
+ro.additionalmounts=/mnt/sdcard2
+ro.vold.switchablepair=/mnt/sdcard,/mnt/sdcard2
