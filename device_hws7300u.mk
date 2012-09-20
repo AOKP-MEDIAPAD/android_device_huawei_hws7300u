@@ -190,5 +190,5 @@ $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := cm_hws7300u
+PRODUCT_NAME := full_hws7300u
 PRODUCT_DEVICE := hws7300u
