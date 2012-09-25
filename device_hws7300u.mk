@@ -72,10 +72,11 @@ PRODUCT_PACKAGES += \
     gralloc.msm8660 \
     hwcomposer.msm8660 \
     libgenlock \
+    libhwcexternal.so \
+    libhwcservice.so \
     libmemalloc \
     liboverlay \
     libqdutils \
-    libqdMetaData.so \
     libtilerenderer \
     libI420colorconvert
 
@@ -116,6 +117,10 @@ PRODUCT_PACKAGES += \
 # Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+# QRNGD
+PRODUCT_PACKAGES += \
+    qrngd
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \

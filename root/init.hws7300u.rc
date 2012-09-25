@@ -154,12 +154,10 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
-service p2p_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c /data/misc/wifi/wpa_supplicant.conf
-    user root
-    group wifi inet
-    socket wpa_wlan0 dgram 0660 wifi wifi
-    disabled
-    oneshot
+# PowerHAL perms
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
+    chmod 664 /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
 
 # Export GPIO56 for fusion targets to enable/disable hub
 service usbhub_init /system/bin/usbhub_init
@@ -179,9 +177,6 @@ on property:init.svc.wpa_supp_wapi=stopped
     stop dhcpcd
     stop dhcpcd_wlan0
     stop iprenew_wlan0
-
-on property:init.svc.p2p_supplicant=stopped	
-    stop dhcpcd
 
 on property:bluetooth.isEnabled=true
     start btwlancoex

@@ -24,6 +24,7 @@ wifi.interface=wlan0
 # graphics
 debug.composition.type=gpu
 debug.mdpcomp.maxlayer=2
+debug.mdpcomp.logs=0
 debug.enabletr=true
 debug.sf.hw=1
 debug.egl.hw=1
@@ -78,3 +79,10 @@ persist.timed.enable=true
 
 # MTP on default
 persist.sys.usb.config=mtp,adb
+
+# hardware info
+ro.device.cpu=1.2GHz Dual Core Qualcomm Snapdragon MSM8260 
+ro.device.gpu=Adreno 220
+ro.device.rear_cam=5 MP
+ro.device.front_cam=1.3 MP
+ro.device.screen_res=800x1280
