@@ -86,3 +86,6 @@ ro.device.gpu=Adreno 220
 ro.device.rear_cam=5 MP
 ro.device.front_cam=1.3 MP
 ro.device.screen_res=800x1280
+
+#launcher 
+launcher.force_enable_rotation=true
