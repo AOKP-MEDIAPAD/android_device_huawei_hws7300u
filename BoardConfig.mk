@@ -20,10 +20,8 @@ TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
-ARCH_ARM_HAVE_ARMV7A_BUG := true
 ARCH_ARM_HAVE_NEON := true
 
 # Flags
@@ -55,6 +53,8 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
+
+# GPS
 BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
@@ -89,7 +89,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun0/
 TARGET_DISABLE_ARM_PIE := true
 
 # Audio
-# BOARD_USE_QCOM_LPA := true
+BOARD_USE_QCOM_LPA := true
 
 # CWM Recovery
 TARGET_RECOVERY_INITRC := device/huawei/hws7300u/recovery/init-cwm.rc
