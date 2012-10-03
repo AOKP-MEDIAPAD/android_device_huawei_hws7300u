@@ -72,8 +72,8 @@ PRODUCT_PACKAGES += \
     gralloc.msm8660 \
     hwcomposer.msm8660 \
     libgenlock \
-    libhwcexternal.so \
-    libhwcservice.so \
+    libhwcexternal \
+    libhwcservice \
     libmemalloc \
     liboverlay \
     libqdutils \
@@ -132,6 +132,7 @@ PRODUCT_PACKAGES += \
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
+    e2fsck \
     setup_fs
 
 # Boot ramdisk
