@@ -20,9 +20,6 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources>
-
-    <!-- True will enable the electron beam screen-off animation. -->
-    <!-- <bool name="config_screenOffAnimation">false</bool> -->
 	
     <!-- NOTE: Set to true for now so electron beam isn't used. This causes a screen lockup on our QCOM's right now. -->
     <bool name="config_animateScreenLights">true</bool>
@@ -57,10 +54,16 @@
          Must be overridden in platform specific overlays
    -->
    <integer-array name="config_autoBrightnessLevels">
+	<item>5</item>
+	<item>10</item>
+	<item>15</item>
 	<item>25</item>
+	<item>35</item>
+	<item>50</item>
 	<item>70</item>
 	<item>95</item>
-	<item>110</item>
+	<item>105</item>
+	<item>130</item>
 	<item>180</item>
 	<item>225</item>  
     </integer-array>
@@ -70,11 +73,17 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-	<item>10</item>    <!-- 0-25 -->
-	<item>45</item>    <!-- 25-70 --> 
-	<item>70</item>    <!-- 70-95 --> 
-	<item>110</item>   <!-- 95-110 -->
-	<item>160</item>   <!-- 110-180 -->
+	<item>15</item>    <!-- 0-5 -->
+	<item>30</item>    <!-- 5-10 -->
+	<item>40</item>    <!-- 10-20 -->
+	<item>50</item>    <!-- 15-25 -->
+	<item>60</item>    <!-- 25-35 --> 
+	<item>70</item>    <!-- 35-50 -->
+	<item>80</item>    <!-- 50-70 --> 
+	<item>90</item>    <!-- 70-95 --> 
+	<item>100</item>   <!-- 95-105 -->
+	<item>130</item>   <!-- 105-130 -->
+	<item>160</item>   <!-- 130-180 -->
 	<item>200</item>   <!-- 180-225 -->
 	<item>225</item>   <!-- 225+ -->
     </integer-array>
@@ -103,7 +112,7 @@
     <bool name="config_autoBrightnessButtonKeyboard">false</bool>
 
     <!-- Minimum screen brightness allowed by the power manager. -->
-    <integer name="config_screenBrightnessDim">10</integer>
+    <integer name="config_screenBrightnessDim">15</integer>
 
     <!-- XXXXX NOTE THE FOLLOWING RESOURCES USE THE WRONG NAMING CONVENTION.
          Please don't copy them, copy anything else. -->
@@ -122,7 +131,7 @@
         <item>"mobile_dun,4,0,3,60000,true"</item>
         <item>"mobile_hipri,5,0,3,60000,true"</item>
         <item>"mobile_bluetooth,7,7,1,-1,true"</item>
-        <item>"wifi_p2p,13,1,0,-1,true"</item>
+        <item>"wifi_p2p,13,1,0,-1,false"</item>
     </string-array>
 
     <!-- An Array of "[ConnectivityManager connectionType],
@@ -185,10 +194,10 @@
          The default is false. -->
     <bool name="config_lidControlsSleep">true</bool>
 
-     <!-- Component name of the service providing network location support. -->	
-    <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location.NetworkLocationProvider</string>
-	
-     <!-- Component name of the service providing geocoder API support. -->	
-    <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location.GeocodeProvider</string>
+    <!-- Package name providing network location support. -->
+    <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
+
+    <!-- Package name providing geocoder API support. -->
+    <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string>
 
 </resources>
