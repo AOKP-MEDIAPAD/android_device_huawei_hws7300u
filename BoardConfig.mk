@@ -65,7 +65,7 @@ TARGET_USES_C2D_COMPOSITION := true
 TARGET_QCOM_HDMI_OUT := true
 TARGET_QCOM_HDMI_RESOLUTION_AUTO := true
 TARGET_USES_PMEM := true
-BOARD_EGL_CFG := device/huawei/hws7300u/prebuilt/egl.cfg
+BOARD_EGL_CFG := device/huawei/hws7300u/prebuilt/lib/egl/egl.cfg
 
 # Webkit
 ENABLE_WEBGL := true
@@ -79,8 +79,9 @@ COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=hws7300u vmalloc=578M kgsl.ptcount=16
 BOARD_KERNEL_BASE := 0x40300000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_SOURCE := kernel/huawei/hws7300u
-TARGET_KERNEL_CONFIG := mediapad_defconfig
+TARGET_PREBUILT_KERNEL := device/huawei/hws7300u/root/kernel
+#TARGET_KERNEL_SOURCE := kernel/huawei/hws7300u
+#TARGET_KERNEL_CONFIG := mediapad_defconfig
 
 # Usb connection to PC
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
@@ -100,6 +101,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 # TWRP Recovery
 # TARGET_RECOVERY_INITRC := device/huawei/hws7300u/recovery/init-twrp.rc
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_USERIMAGES_USE_EXT4 := true
 # DEVICE_RESOLUTION := 1280x800
 # SP1_NAME := "cust"
 # SP1_BACKUP_METHOD := image
@@ -114,3 +116,4 @@ TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 # TW_NO_BATT_PERCENT := true
 
 TARGET_NO_HW_VSYNC := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
