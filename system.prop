@@ -1,4 +1,3 @@
-
 # set default lcd density to TVDPI
 ro.sf.lcd_density=213
 
@@ -23,7 +22,7 @@ ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # wifi
 wifi.interface=wlan0
-wlan.mac=
+persist.wlan.mac=
 
 # graphics
 debug.composition.type=gpu
@@ -39,6 +38,7 @@ persist.sys.color.enhance=true
 
 # system props for SD card emulation of emmc partition
 ro.emmc.sdcard.partition=23
+persist.extinternal=0
 
 #system props for the MM modules
 media.stagefright.enable-player=true
