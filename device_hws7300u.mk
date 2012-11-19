@@ -69,7 +69,8 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/lib/modules/msm-buspm-dev.ko:system/lib/modules/msm-buspm-dev.ko \
     device/huawei/hws7300u/prebuilt/lib/modules/qcedev.ko:system/lib/modules/qcedev.ko \
     device/huawei/hws7300u/prebuilt/lib/modules/qcedev.ko:system/lib/modules/xpad.ko \
-    device/huawei/hws7300u/prebuilt/lib/modules/qcedev.ko:system/lib/modules/ff-memless.ko
+    device/huawei/hws7300u/prebuilt/lib/modules/qcedev.ko:system/lib/modules/ff-memless.ko \
+    device/huawei/hws7300u/prebuilt/app/DeviceSettings.apk:system/app/DeviceSettings.apk
 
 # Permissions
 PRODUCT_COPY_FILES += \
