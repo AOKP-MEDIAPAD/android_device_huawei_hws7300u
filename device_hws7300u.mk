@@ -19,7 +19,7 @@ PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
 LOCAL_PATH := device/huawei/hws7300u  	
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := $(LOCAL_PATH)/root/kernel
+    LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
     LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)	
 endif
