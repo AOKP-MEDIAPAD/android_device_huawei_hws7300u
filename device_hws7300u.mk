@@ -130,7 +130,11 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libstagefrighthw \
     libstagefright_client
-
+	
+# DeviceSettings
+PRODUCT_PACKAGES += \
+     MediapadSettings \
+	
 # GPS
 PRODUCT_PACKAGES += \
     gps.default
