@@ -57,14 +57,14 @@ public class DeviceSettings extends PreferenceActivity  {
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 
         if(preference == mPrefColor)
-            SystemProperties.set(PROP_COLOR_ENHANCE, (mPrefColor.isChecked() ? "true" : "false"));
+            setProp(PROP_COLOR_ENHANCE, (mPrefColor.isChecked() ? "true" : "false"));
         if(preference == mPrefMac)
             setCustomMacDialog();
         if(preference == mExtInternal)
-            SystemProperties.set(PROP_EXT_INTERNAL, (mExtInternal.isChecked() ? "1" : "0"));
+            setProp(PROP_EXT_INTERNAL, (mExtInternal.isChecked() ? "1" : "0"));
 	if(preference == mHWOverlay)
 	{
-	    SystemProperties.set(PROP_HW_OVERLAY, (mHWOverlay.isChecked() ? "1" : "0"));
+	    setProp(PROP_HW_OVERLAY, (mHWOverlay.isChecked() ? "1" : "0"));
 	    int status = ( mHWOverlay.isChecked() ? 0 : 1 );
 	    disableOverlaysOption(status);
 	}
@@ -76,11 +76,11 @@ public class DeviceSettings extends PreferenceActivity  {
     private void initPreferenceActivity()
     {
         mPrefColor = (CheckBoxPreference) findPreference(KEY_LDC_COLOR);
-        mPrefColor.setChecked(SystemProperties.get(PROP_COLOR_ENHANCE,"false").equals("true"));
+        mPrefColor.setChecked(getProp(PROP_COLOR_ENHANCE,"false").equals("true"));
         mExtInternal = (CheckBoxPreference) findPreference(KEY_EXT_INT);
-        mExtInternal.setChecked(SystemProperties.get(PROP_EXT_INTERNAL,"0").equals("1"));
-	mHWOverlay = (CheckBoxPreference) findPreference(KEY_HW_OVERLAY);
-        mHWOverlay.setChecked(SystemProperties.get(PROP_HW_OVERLAY,"1").equals("1"));
+        mExtInternal.setChecked(getProp(PROP_EXT_INTERNAL,"0").equals("1"));
+		mHWOverlay = (CheckBoxPreference) findPreference(KEY_HW_OVERLAY);
+        mHWOverlay.setChecked(getProp(PROP_HW_OVERLAY,"1").equals("1"));
         mPrefMac = (Preference) findPreference(KEY_WLAN_MAC);
 
     }
@@ -99,6 +99,16 @@ public class DeviceSettings extends PreferenceActivity  {
         } catch (RemoteException ex) {	
         }	
      }
+	
+	private void setProp(String key,String val)
+	{
+		CMDProcessor.rootCommand("setprop "+key+" "+val);
+	}
+	
+	private String getProp(String key,String def)
+	{
+		return SystemProperties.get(key,def);
+	}
 
     private void setCustomMacDialog()
     {
@@ -111,7 +121,7 @@ public class DeviceSettings extends PreferenceActivity  {
         alert.setView(input);
 
 
-        input.setText(SystemProperties.get(PROP_WLAN_MAC,""));
+        input.setText(getProp(PROP_WLAN_MAC,""));
         InputFilter filter= new InputFilter() {
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                 for (int i = start; i < end; i++) {
@@ -136,7 +146,7 @@ public class DeviceSettings extends PreferenceActivity  {
 
         alert.setPositiveButton(getString(R.string.save), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                SystemProperties.set(PROP_WLAN_MAC, input.getText().toString().trim() );
+                setProp(PROP_WLAN_MAC, input.getText().toString().trim() );
                 editor.putString(PROP_WLAN_MAC,input.getText().toString().trim());
                 editor.commit();
                 dialog.cancel();
