@@ -11,7 +11,11 @@ import android.text.InputType;
 import android.text.Spanned;
 import android.util.Log;
 import com.cyanogenmod.settings.device.tools.CMDProcessor;
-import com.cyanogenmod.settings.device.tools.SystemProperties;
+import android.os.SystemProperties;
+import android.os.IBinder;
+import android.os.ServiceManager;
+import android.os.Parcel;
+import android.os.RemoteException;
 import android.widget.*;
 
 import java.util.regex.Matcher;
@@ -27,15 +31,18 @@ public class DeviceSettings extends PreferenceActivity  {
     public static final String KEY_LDC_COLOR = "lcd_color";
     public static final String KEY_WLAN_MAC = "wlan_mac";
     public static final String KEY_EXT_INT = "ext_internal";
+    public static final String KEY_HW_OVERLAY = "hw_overlay";
 
     public static final String PROP_COLOR_ENHANCE = "persist.sys.color.enhance";
     public static final String PROP_WLAN_MAC = "persist.wlan.mac";
     public static final String PROP_EXT_INTERNAL = "persist.extinternal";
+    public static final String PROP_HW_OVERLAY = "persist.hw.overlay";
 
     private CheckBoxPreference mPrefColor;
     private Preference mPrefMac;
     private CheckBoxPreference mExtInternal;
     private Context context;
+    private CheckBoxPreference mHWOverlay;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,26 +57,48 @@ public class DeviceSettings extends PreferenceActivity  {
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 
         if(preference == mPrefColor)
-            SystemProperties.set(context, PROP_COLOR_ENHANCE, (mPrefColor.isChecked() ? "true" : "false"));
+            SystemProperties.set(PROP_COLOR_ENHANCE, (mPrefColor.isChecked() ? "true" : "false"));
         if(preference == mPrefMac)
             setCustomMacDialog();
         if(preference == mExtInternal)
-            SystemProperties.set(context, PROP_EXT_INTERNAL, (mExtInternal.isChecked() ? "1" : "0"));
-
-
+            SystemProperties.set(PROP_EXT_INTERNAL, (mExtInternal.isChecked() ? "1" : "0"));
+	if(preference == mHWOverlay)
+	{
+	    SystemProperties.set(PROP_HW_OVERLAY, (mHWOverlay.isChecked() ? "1" : "0"));
+	    int status = ( mHWOverlay.isChecked() ? 0 : 1 );
+	    disableOverlaysOption(status);
+	}
         return false;
     }
+
+
 
     private void initPreferenceActivity()
     {
         mPrefColor = (CheckBoxPreference) findPreference(KEY_LDC_COLOR);
-        mPrefColor.setChecked(SystemProperties.get(context, PROP_COLOR_ENHANCE).equals("true"));
+        mPrefColor.setChecked(SystemProperties.get(PROP_COLOR_ENHANCE,"false").equals("true"));
         mExtInternal = (CheckBoxPreference) findPreference(KEY_EXT_INT);
-        mExtInternal.setChecked(SystemProperties.get(context, PROP_EXT_INTERNAL).equals("1"));
-
+        mExtInternal.setChecked(SystemProperties.get(PROP_EXT_INTERNAL,"0").equals("1"));
+	mHWOverlay = (CheckBoxPreference) findPreference(KEY_HW_OVERLAY);
+        mHWOverlay.setChecked(SystemProperties.get(PROP_HW_OVERLAY,"1").equals("1"));
         mPrefMac = (Preference) findPreference(KEY_WLAN_MAC);
 
     }
+
+    private void disableOverlaysOption(int status) {
+        try {
+            IBinder flinger = ServiceManager.getService("SurfaceFlinger");
+            if (flinger != null) {
+                Parcel data = Parcel.obtain();
+                data.writeInterfaceToken("android.ui.ISurfaceComposer");
+                final int disableOverlays = status; 
+                data.writeInt(disableOverlays);
+                flinger.transact(1008, data, null, 0);
+                data.recycle();
+            }
+        } catch (RemoteException ex) {	
+        }	
+     }
 
     private void setCustomMacDialog()
     {
@@ -82,7 +111,7 @@ public class DeviceSettings extends PreferenceActivity  {
         alert.setView(input);
 
 
-        input.setText(SystemProperties.get(context, PROP_WLAN_MAC));
+        input.setText(SystemProperties.get(PROP_WLAN_MAC,""));
         InputFilter filter= new InputFilter() {
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                 for (int i = start; i < end; i++) {
@@ -107,7 +136,7 @@ public class DeviceSettings extends PreferenceActivity  {
 
         alert.setPositiveButton(getString(R.string.save), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                SystemProperties.set(context,PROP_WLAN_MAC, input.getText().toString().trim() );
+                SystemProperties.set(PROP_WLAN_MAC, input.getText().toString().trim() );
                 editor.putString(PROP_WLAN_MAC,input.getText().toString().trim());
                 editor.commit();
                 dialog.cancel();

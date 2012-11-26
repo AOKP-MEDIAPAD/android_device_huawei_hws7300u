@@ -20,4 +20,11 @@
             android:defaultValue="false"
             android:summary="@string/summary_ext_internal"/>
 
+   <CheckBoxPreference
+            android:key="hw_overlay"
+            android:title="@string/title_hw_overlay"
+            android:persistent="false"
+            android:defaultValue="true"
+            android:summary="@string/summary_hw_overlay"/>
+
 </PreferenceScreen>
