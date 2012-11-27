@@ -54,21 +54,25 @@ public class BootService extends Service  {
                     cmd.rootCommand("mount -t vfat -o umask=0000 /dev/block/vold/179:97 /storage/sdcard0");
                     cmd.rootCommand("mount -o bind /data/media /storage/sdcard1");
                 }
-		if( SystemProperties.get(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
-		{
-			try {
-            			IBinder flinger = ServiceManager.getService("SurfaceFlinger");
-            			if (flinger != null) {
-                			Parcel data = Parcel.obtain();
-                			data.writeInterfaceToken("android.ui.ISurfaceComposer");
-                			final int disableOverlays = 1; 
-                			data.writeInt(disableOverlays);
-                			flinger.transact(1008, data, null, 0);
-                			data.recycle();
-            			}
-        		} catch (RemoteException ex) {	
-        		}
-		}
+				if( SystemProperties.get(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
+				{
+					try {
+								IBinder flinger = ServiceManager.getService("SurfaceFlinger");
+								if (flinger != null) {
+									Parcel data = Parcel.obtain();
+									data.writeInterfaceToken("android.ui.ISurfaceComposer");
+									final int disableOverlays = 1; 
+									data.writeInt(disableOverlays);
+									flinger.transact(1008, data, null, 0);
+									data.recycle();
+								}
+						} catch (RemoteException ex) {	
+						}
+				}
+				if( SystemProperties.get(DeviceSettings.PROP_SYS_POWER_SAVE,"0").equals("1") )
+				{
+					CMDProcessor.rootCommand("echo 1 > /sys/sdio_mode/lowfreqmode &");
+				}
                 return null;
             }
 

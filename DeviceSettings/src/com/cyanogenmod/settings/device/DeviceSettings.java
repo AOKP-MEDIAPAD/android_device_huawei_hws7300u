@@ -32,17 +32,20 @@ public class DeviceSettings extends PreferenceActivity  {
     public static final String KEY_WLAN_MAC = "wlan_mac";
     public static final String KEY_EXT_INT = "ext_internal";
     public static final String KEY_HW_OVERLAY = "hw_overlay";
+	public static final String KEY_POWER_SAVE = "power_save";
 
     public static final String PROP_COLOR_ENHANCE = "persist.sys.color.enhance";
     public static final String PROP_WLAN_MAC = "persist.wlan.mac";
     public static final String PROP_EXT_INTERNAL = "persist.extinternal";
     public static final String PROP_HW_OVERLAY = "persist.hw.overlay";
+	public static final String PROP_SYS_POWER_SAVE = "persist.sys.sdio.lowfreqmode";
 
     private CheckBoxPreference mPrefColor;
     private Preference mPrefMac;
     private CheckBoxPreference mExtInternal;
     private Context context;
     private CheckBoxPreference mHWOverlay;
+	private CheckBoxPreference mPowerSave;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,12 +65,18 @@ public class DeviceSettings extends PreferenceActivity  {
             setCustomMacDialog();
         if(preference == mExtInternal)
             setProp(PROP_EXT_INTERNAL, (mExtInternal.isChecked() ? "1" : "0"));
-	if(preference == mHWOverlay)
-	{
-	    setProp(PROP_HW_OVERLAY, (mHWOverlay.isChecked() ? "1" : "0"));
-	    int status = ( mHWOverlay.isChecked() ? 0 : 1 );
-	    disableOverlaysOption(status);
-	}
+		if(preference == mHWOverlay)
+		{
+			setProp(PROP_HW_OVERLAY, (mHWOverlay.isChecked() ? "1" : "0"));
+			int status = ( mHWOverlay.isChecked() ? 0 : 1 );
+			disableOverlaysOption(status);
+		}
+		if(preference == mPowerSave)
+		{
+			String status = (mPowerSave.isChecked() ? "1" : "0");
+			setProp(PROP_SYS_POWER_SAVE, status);
+			CMDProcessor.rootCommand("echo "+status+" > /sys/sdio_mode/lowfreqmode &");
+		}
         return false;
     }
 
@@ -75,13 +84,19 @@ public class DeviceSettings extends PreferenceActivity  {
 
     private void initPreferenceActivity()
     {
+		mPrefMac = (Preference) findPreference(KEY_WLAN_MAC);
+		
         mPrefColor = (CheckBoxPreference) findPreference(KEY_LDC_COLOR);
         mPrefColor.setChecked(getProp(PROP_COLOR_ENHANCE,"false").equals("true"));
+		
         mExtInternal = (CheckBoxPreference) findPreference(KEY_EXT_INT);
         mExtInternal.setChecked(getProp(PROP_EXT_INTERNAL,"0").equals("1"));
+		
 		mHWOverlay = (CheckBoxPreference) findPreference(KEY_HW_OVERLAY);
         mHWOverlay.setChecked(getProp(PROP_HW_OVERLAY,"1").equals("1"));
-        mPrefMac = (Preference) findPreference(KEY_WLAN_MAC);
+		
+		mPowerSave = (CheckBoxPreference) findPreference(KEY_POWER_SAVE);
+        mPowerSave.setChecked(getProp(PROP_SYS_POWER_SAVE,"0").equals("1"));
 
     }
 

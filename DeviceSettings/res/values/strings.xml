@@ -12,6 +12,10 @@
    
     <string name="title_hw_overlay">Hardware overlay</string>
     <string name="summary_hw_overlay">Disable if you have flickers</string>
+	
+	<string name="title_power_save">Power Save Mod</string>
+    <string name="summary_power_save">Enable battery saving mode and lowers the CPU frequency</string>
+	
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
 </resources>

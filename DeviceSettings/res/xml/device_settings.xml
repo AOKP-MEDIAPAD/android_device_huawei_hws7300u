@@ -26,5 +26,12 @@
             android:persistent="false"
             android:defaultValue="true"
             android:summary="@string/summary_hw_overlay"/>
+			
+	<CheckBoxPreference
+            android:key="power_save"
+            android:title="@string/title_power_save"
+            android:persistent="false"
+            android:defaultValue="false"
+            android:summary="@string/summary_power_save"/>
 
 </PreferenceScreen>
