@@ -53,6 +53,7 @@ public class BootService extends Service  {
                     CMDProcessor cmd = new CMDProcessor();
                     cmd.rootCommand("mount -t vfat -o umask=0000 /dev/block/vold/179:97 /storage/sdcard0");
                     cmd.rootCommand("mount -o bind /data/media /storage/sdcard1");
+                    cmd.rootCommand("chmod 755 /storage/sdcard1");
                 }
 				if( SystemProperties.get(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
 				{
