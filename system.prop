@@ -1,0 +1,83 @@
+
+# set default lcd density to TVDPI
+ro.sf.lcd_density=213
+
+# radio
+rild.libpath=/system/lib/libril-qc-qmi-1.so
+rild.libargs=-d /dev/smd0
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+mobiledata.interfaces=rmnet0
+ro.telephony.ril.v3=signalstrength
+ro.use_data_netmgrd=true
+ro.ril.hsxpa=1
+ro.ril.gprsclass=10
+ro.vendor.extension_library=/system/lib/libqc-opt.so
+
+# wifi
+wifi.interface=wlan0
+
+# graphics
+debug.composition.type=gpu
+debug.mdpcomp.maxlayer=0
+debug.mdpcomp.logs=0
+debug.enabletr=true
+debug.sf.hw=1
+ro.opengles.version=131072
+dev.pm.dyn_samplingrate=1
+ro.hwui.text_cache_width=2048
+persist.sys.color.enhance=true
+
+# system props for SD card emulation of emmc partition
+ro.emmc.sdcard.partition=23
+
+#system props for the MM modules
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-fma2dp=false
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+
+# System props for audio
+persist.audio.fluence.mode=endfire
+persist.audio.vr.enable=false
+
+# LPA
+# lpa.decode=false
+# lpa.use-stagefright=true
+
+# hdmi
+com.qc.hardware=true
+
+# For adding charging animation
+persist.sys.chargingstart=false
+
+# Add To: use Sensor for the currentAppOrientation
+ro.config.hw_GSensorOptimize=true
+
+# System prop for sending transmit power request to RIL during WiFi hotspot on/off
+ro.ril.transmitpower=true
+
+# system prop for Bluetooth Auto connect for remote initated connections
+ro.bluetooth.remote.autoconnect=true
+
+# system prop for Bluetooth FTP profile
+ro.qualcomm.bluetooth.ftp=true
+
+# system prop for requesting Master role in incoming Bluetooth connection.
+ro.bluetooth.request.master=true
+
+# System props for time-services
+persist.timed.enable=true
+
+# MTP on default
+persist.sys.usb.config=mtp,adb
+
+dalvik.vm.dexopt-data-only=1
