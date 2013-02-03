@@ -29,7 +29,7 @@ DEVICE_PACKAGE_OVERLAYS := \
 
 PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15 \
+    wifi.supplicant_scan_interval=30 \
     tf.enable=y \
     drm.service.enabled=true
 
@@ -114,8 +114,7 @@ PRODUCT_PACKAGES += \
     audio.primary.msm8660 \
     audio.a2dp.default \
     audio_policy.msm8660 \
-    libaudioutils \
-    audio_policy.conf
+    libaudioutils
 
 # Omx
 PRODUCT_PACKAGES += \
@@ -136,8 +135,7 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.default \
-    librpc
+    gps.default
 
 # Power
 PRODUCT_PACKAGES += \
@@ -187,12 +185,10 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
     device/huawei/hws7300u/prebuilt/etc/init.hw.insmod.sh:system/etc/init.hw.insmod.sh \
     device/huawei/hws7300u/prebuilt/etc/init.brcm.bt.sh:system/etc/init.brcm.bt.sh \
-    device/huawei/hws7300u/prebuilt/etc/test.bt.sh:system/etc/test.bt.sh \
     device/huawei/hws7300u/prebuilt/etc/init.bt.sh:system/etc/init.bt.sh \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
-    device/huawei/hws7300u/prebuilt/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
     device/huawei/hws7300u/prebuilt/etc/bluetooth_power.sh:system/etc/bluetooth_power.sh
 
 # Firmware
@@ -232,7 +228,8 @@ PRODUCT_COPY_FILES += \
 # Some misc configuration files
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/huawei/hws7300u/prebuilt/usr/idc/t1320.idc:system/usr/idc/t1320.idc
+    device/huawei/hws7300u/prebuilt/usr/idc/t1320.idc:system/usr/idc/t1320.idc \
+    device/huawei/hws7300u/prebuilt/usr/idc/s7020.idc:system/usr/idc/s7020.idc
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -244,7 +241,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/huawei/hws7300u/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    device/huawei/hws7300u/prebuilt/etc/audio_effects.conf:system/etc/audio_effects.conf
+    device/huawei/hws7300u/prebuilt/etc/audio_effects.conf:system/etc/audio_effects.conf \
+    device/huawei/hws7300u/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
 
 # Auto loading of gamepad modules	
 PRODUCT_COPY_FILES += \

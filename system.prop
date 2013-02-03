@@ -21,9 +21,6 @@ ro.ril.hsxpa=1
 ro.ril.gprsclass=10
 ro.vendor.extension_library=/system/lib/libqc-opt.so
 
-# wifi
-wifi.interface=wlan0
-
 # graphics
 debug.composition.type=gpu
 debug.mdpcomp.maxlayer=0
