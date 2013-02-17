@@ -161,7 +161,7 @@ public class DeviceSettings extends PreferenceActivity  {
 
         alert.setPositiveButton(getString(R.string.save), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                SystemProperties.set(context,PROP_WLAN_MAC, input.getText().toString().trim() );
+                SystemProperties.set(PROP_WLAN_MAC, input.getText().toString().trim() );
                 editor.putString(PROP_WLAN_MAC,input.getText().toString().trim());
                 editor.commit();
                 dialog.cancel();
