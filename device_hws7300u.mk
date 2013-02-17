@@ -107,7 +107,7 @@ PRODUCT_PACKAGES += \
     liboverlay \
     libqdutils \
     libtilerenderer \
-    libI420colorconvert
+    libc2dcolorconvert 
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -237,6 +237,10 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/usr/keylayout/fluid-keypad.kl:system/usr/keylayout/fluid-keypad.kl \
     device/huawei/hws7300u/prebuilt/usr/keylayout/ffa-keypad.kl:system/usr/keylayout/ffa-keypad.kl
 
+#WIFI
+PRODUCT_COPY_FILES += \
+    device/huawei/hws7300u/prebuilt/bin/wpa_supplicant:system/bin/wpa_supplicant
+    
 # Custom media config
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
