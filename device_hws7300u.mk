@@ -238,8 +238,8 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/usr/keylayout/ffa-keypad.kl:system/usr/keylayout/ffa-keypad.kl
 
 #WIFI
-PRODUCT_COPY_FILES += \
-    device/huawei/hws7300u/prebuilt/bin/wpa_supplicant:system/bin/wpa_supplicant
+#PRODUCT_COPY_FILES += \
+#    device/huawei/hws7300u/prebuilt/bin/wpa_supplicant:system/bin/wpa_supplicant
     
 # Custom media config
 PRODUCT_COPY_FILES += \
