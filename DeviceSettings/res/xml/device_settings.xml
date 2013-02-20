@@ -18,6 +18,7 @@
             android:title="@string/title_ext_internal"
             android:persistent="false"
             android:defaultValue="false"
+	    android:enabled="false"
             android:summary="@string/summary_ext_internal"/>
 
    <CheckBoxPreference
