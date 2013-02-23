@@ -18,6 +18,21 @@
             android:title="@string/title_ext_internal"
             android:persistent="false"
             android:defaultValue="false"
+	    android:enabled="false"
             android:summary="@string/summary_ext_internal"/>
+
+   <CheckBoxPreference
+            android:key="hw_overlay"
+            android:title="@string/title_hw_overlay"
+            android:persistent="false"
+            android:defaultValue="true"
+            android:summary="@string/summary_hw_overlay"/>
+			
+	<CheckBoxPreference
+            android:key="power_save"
+            android:title="@string/title_power_save"
+            android:persistent="false"
+            android:defaultValue="false"
+            android:summary="@string/summary_power_save"/>
 
 </PreferenceScreen>
