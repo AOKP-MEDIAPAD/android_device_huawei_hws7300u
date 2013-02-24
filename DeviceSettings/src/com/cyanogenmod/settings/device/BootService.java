@@ -11,8 +11,8 @@ import android.content.Intent;
 import android.os.ServiceManager;
 import android.os.Parcel;
 import android.os.RemoteException;
-import com.cyanogenmod.settings.device.tools.CMDProcessor;
-
+import com.cyanogenmod.settings.device.CMDProcessor;
+import com.cyanogenmod.settings.device.CMDProcessor.CommandResult;
 /**
  * Created with IntelliJ IDEA.
  * User: zyr3x
@@ -23,7 +23,7 @@ import com.cyanogenmod.settings.device.tools.CMDProcessor;
 public class BootService extends Service  {
 
         public static boolean servicesStarted = false;
-
+     
         @Override
         public int onStartCommand(Intent intent, int flags, int startId) {
             if (intent == null) {
@@ -45,16 +45,20 @@ public class BootService extends Service  {
             public BootWorker(Context c) {
                 this.c = c;
             }
+            
+            private String getProp(String key,String def)
+            {
+		CMDProcessor cmd = new CMDProcessor();
+		CommandResult result = cmd.su.runWaitFor("getprop "+key);
+		return (result.getOutput().getFirst().equals("") || result.getOutput().getFirst() == null) ? def : result.getOutput().getFirst();
+            }
 
             @Override
             protected Void doInBackground(Void... args) {
-                if( SystemProperties.get(DeviceSettings.PROP_EXT_INTERNAL,"0").equals("1"))
-                {
-                    CMDProcessor cmd = new CMDProcessor();
-                    cmd.rootCommand("mount -t vfat -o umask=0000 /dev/block/vold/179:97 /storage/emulated/legacy");
-                    cmd.rootCommand("mount -o bind /data/media /storage/sdcard1");
-                }
-				if( SystemProperties.get(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
+				CMDProcessor cmd = new CMDProcessor();
+			
+					
+				if( getProp(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
 				{
 					try {
 								IBinder flinger = ServiceManager.getService("SurfaceFlinger");
@@ -69,12 +73,11 @@ public class BootService extends Service  {
 						} catch (RemoteException ex) {	
 						}
 				}
-				if( SystemProperties.get(DeviceSettings.PROP_SYS_POWER_SAVE,"0").equals("1") )
-				{
-					CMDProcessor.rootCommand("echo 1 > /sys/sdio_mode/lowfreqmode &");
-				}
+				if( getProp(DeviceSettings.PROP_SYS_POWER_SAVE,"0").equals("1") )
+					cmd.su.runWaitFor("echo 1  > /sys/sdio_mode/lowfreqmode &");
                 return null;
             }
+            
 
             @Override
             protected void onPostExecute(Void result) {
