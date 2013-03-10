@@ -31,7 +31,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=30 \
     tf.enable=y \
-    drm.service.enabled=true
+    drm.service.enabled=true 
 
 include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
 
@@ -254,7 +254,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.lockprof.threshold=500 \
     ro.com.google.locationfeatures=1 \
     dalvik.vm.dexopt-flags=m=y
-
+    
+#Goo.im
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.goo.developerid=zyr3x \
+    ro.goo.board=hws7300u \
+    ro.goo.rom=AOKPMR1hws7300u \
+    ro.goo.version=$(shell date +%Y%m%d)
+    
 # proprietary side of the device
 $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)
 
