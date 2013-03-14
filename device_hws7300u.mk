@@ -218,14 +218,11 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
     device/huawei/hws7300u/prebuilt/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
     device/huawei/hws7300u/prebuilt/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
-    device/huawei/hws7300u/prebuilt/lib/egl/libplayback_adreno200.so:system/lib/egl/libplayback_adreno200.so \
     device/huawei/hws7300u/prebuilt/lib/egl/libGLESv2S3D_adreno200.so:system/lib/egl/libGLESv2S3D_adreno200.so \
     device/huawei/hws7300u/prebuilt/lib/libc2d2_z180.so:system/lib/libc2d2_z180.so \
     device/huawei/hws7300u/prebuilt/lib/libC2D2.so:system/lib/libC2D2.so \
-    device/huawei/hws7300u/prebuilt/lib/libCB.so:system/lib/libCB.so \
     device/huawei/hws7300u/prebuilt/lib/libgsl.so:system/lib/libgsl.so \
     device/huawei/hws7300u/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
-    device/huawei/hws7300u/prebuilt/lib/libOpenCL.so:system/lib/libOpenCL.so \
     device/huawei/hws7300u/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
 
 # Some misc configuration files
