@@ -53,7 +53,7 @@ BOARD_LEGACY_NL80211_STA_EVENTS := true
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
-TARGET_QCOM_AUDIO_VARIANT := legacy
+TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_LEGACY_OVERLAY := true
 
 # GPS
@@ -84,12 +84,12 @@ BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=hws7300u vmalloc=578M kgsl.ptcount=16
 BOARD_KERNEL_BASE := 0x40300000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_PREBUILT_KERNEL := device/huawei/hws7300u/kernel
-#TARGET_KERNEL_SOURCE := kernel/huawei/hws7300u
-#TARGET_KERNEL_CONFIG := mediapad_defconfig
+#TARGET_PREBUILT_KERNEL := device/huawei/hws7300u/kernel
+TARGET_KERNEL_SOURCE := kernel/huawei/hws7300u
+TARGET_KERNEL_CONFIG := mediapad_defconfig
 
 # Usb connection to PC
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 
 # Audio
 # BOARD_USE_QCOM_LPA := true
