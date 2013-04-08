@@ -43,7 +43,7 @@ WIFI_DRIVER_FW_PATH_AP      := "/etc/wifi/rtecdc-apsta-bcm4329.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/etc/wifi/rtecdc-bcm4329.bin nvram_path=/etc/wifi/nvram-bcm4329.txt"
 BOARD_HAVE_HUAWEI_WIFI := true
 BOARD_LEGACY_NL80211_STA_EVENTS := true
-
+BOARD_USE_OLD_SOFTAP := true
 # Bluetooth
 #BOARD_HAVE_BLUETOOTH := true
 #BOARD_HAVE_BLUETOOTH_BCM := true
