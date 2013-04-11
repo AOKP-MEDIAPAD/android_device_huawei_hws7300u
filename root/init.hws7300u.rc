@@ -241,6 +241,13 @@ service brcmpatch /system/bin/log -t brcm-bluetooth -p i "brcm_patchram_plus ser
     disabled
     oneshot
 
+service hciattach /system/bin/sh /system/etc/init.brcm.bt.sh
+    class late_start
+    user bluetooth
+    group qcom_oncrpc bluetooth net_bt_admin
+    disabled
+    oneshot
+
 service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
     class late_start
     disabled
