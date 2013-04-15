@@ -46,7 +46,8 @@ public class DeviceSettings extends PreferenceActivity implements OnSharedPrefer
     private Preference mPrefMac;
     private CheckBoxPreference mHWOverlay;
     private CheckBoxPreference mPowerSave;
-
+    private CheckBoxPreference	mExtInternal;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
