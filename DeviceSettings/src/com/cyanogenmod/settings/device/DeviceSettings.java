@@ -118,7 +118,7 @@ public class DeviceSettings extends PreferenceActivity implements OnSharedPrefer
         
         
         mExtInternal = (CheckBoxPreference) findPreference(KEY_EXT_INT);
-        mExtInternal.setChecked(getProp(PROP_EXT_INTERNAL).equals("1"));
+        mExtInternal.setChecked(getProp(PROP_EXT_INTERNAL,"0").equals("1"));
 
 
     }
