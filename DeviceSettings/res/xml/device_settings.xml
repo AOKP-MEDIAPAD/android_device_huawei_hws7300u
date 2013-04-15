@@ -32,7 +32,14 @@
    </PreferenceCategory>
         
    <PreferenceCategory android:title="@string/title_system">
-          
+  
+   <CheckBoxPreference
+            android:key="ext_internal"
+            android:title="@string/title_ext_internal"
+            android:persistent="false"
+            android:defaultValue="true"
+            android:summary="@string/summary_ext_internal"/>
+	    
    <CheckBoxPreference
             android:key="hw_overlay"
             android:title="@string/title_hw_overlay"

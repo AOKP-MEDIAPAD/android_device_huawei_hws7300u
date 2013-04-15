@@ -57,7 +57,22 @@ public class BootService extends Service  {
             protected Void doInBackground(Void... args) {
 				CMDProcessor cmd = new CMDProcessor();
 			
-					
+			    if( SystemProperties.get(DeviceSettings.PROP_EXT_INTERNAL,"0").equals("1"))
+				{
+				
+				    cmd.rootCommand("mount -o remount,rw /");
+				    cmd.rootCommand("mkdir /data/newext_sd");
+				    cmd.rootCommand("mkdir /data/newext_sd/myfolder");
+				    cmd.rootCommand("mount -t vfat -o umask=0000 /dev/block/vold/179:97 /mnt/shell");
+				    cmd.rootCommand("mount -o bind /data/newext_sd /storage/sdcard1");
+				    cmd.rootCommand("chmod 0075 /data/newext_sd");
+				    cmd.rootCommand("chown system /data/newext_sd");
+				    cmd.rootCommand("chgrp sdcard_rw /data/newext_sd");
+				    cmd.rootCommand("chmod 0777 /data/newext_sd/myfolder");
+				    cmd.rootCommand("chown root /data/newext_sd/myfolder");
+				    cmd.rootCommand("chgrp root /data/newext_sd/myfolder");
+				    cmd.rootCommand("mount -o remount,ro /");
+				}
 				if( getProp(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
 				{
 					try {
