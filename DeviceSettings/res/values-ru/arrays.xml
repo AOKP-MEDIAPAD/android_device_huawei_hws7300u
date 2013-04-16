@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="dpi_names">
+        <item>Стандартное разрешение</item>
+        <item>Высокое разрешение</item>
+    </string-array>
+
+</resources>

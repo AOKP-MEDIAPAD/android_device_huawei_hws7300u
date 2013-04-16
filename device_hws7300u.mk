@@ -101,6 +101,13 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxQcelp13Enc
 	
+# Bt
+PRODUCT_PACKAGES += \
+    bluetoothd \
+    hciconfig \
+    hcitool \
+    brcm_patchram_plus
+	
 # Device specific settings
 PRODUCT_PACKAGES += \
      MediapadSettings \
@@ -217,6 +224,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/init.d/01x360ctrlr:system/etc/init.d/01x360ctrlr
 
+# EXT SD Patch	
+PRODUCT_COPY_FILES += \
+    device/huawei/hws7300u/prebuilt/etc/init.d/04extsd:system/etc/init.d/04extsd
+	
 ## misc
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \

@@ -2,9 +2,9 @@
 <resources>
     
     
-    <string-array name="dpi_names" translatable="false">
-        <item>213 dpi</item>
-        <item>160 dpi</item>
+	<string-array name="dpi_names">
+        <item>Default density</item>
+        <item>High density</item>
     </string-array>
 
         
