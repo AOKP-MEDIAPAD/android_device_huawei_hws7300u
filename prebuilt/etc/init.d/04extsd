@@ -1,6 +1,6 @@
 #!/system/bin/sh	
 extinternal=`getprop persist.extinternal`
-if ["$extinternal" = "1"];
+if [ "$extinternal" = "1" ];
 then
 sleep 3
 mount -o remount,rw /
