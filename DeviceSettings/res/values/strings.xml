@@ -22,7 +22,7 @@
     <string name="summary_power_save">Enable battery saving mode and lowers the CPU frequency</string>
 	
     <string name="title_ext_internal">Ext. Internal</string>
-    <string name="summary_ext_internal">Sdcard as Internal memory. Only Owner User (Reboot and wipe cache are required for changes to take effect)</string>
+    <string name="summary_ext_internal">Sdcard as Internal memory (Reboot and wipe cache are required for changes to take effect)</string>
      
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
