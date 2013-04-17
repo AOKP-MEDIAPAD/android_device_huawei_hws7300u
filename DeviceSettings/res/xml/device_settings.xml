@@ -45,6 +45,7 @@
             android:title="@string/title_hw_overlay"
             android:persistent="false"
             android:defaultValue="true"
+			android:visibility="gone"
             android:summary="@string/summary_hw_overlay"/>
 			
 	<CheckBoxPreference
