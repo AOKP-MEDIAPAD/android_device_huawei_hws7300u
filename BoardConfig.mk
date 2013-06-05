@@ -18,7 +18,7 @@ TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_ARMV7A := true
-
+TARGET_ARCH_VARIANT_CPU := cortex-a8
 
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
@@ -48,10 +48,11 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 # QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_QCOM_AUDIO_VARIANT := caf
-BOARD_USES_LEGACY_OVERLAY := true
+BOARD_USES_LEGACY_QCOM := true
+BOARD_USES_LEGACY_MEDIA := true
+BOARD_USES_QCOM_HARDWARE := true
 
 # GPS
 BOARD_USES_QCOM_GPS := true
@@ -71,11 +72,8 @@ TARGET_FORCE_CPU_UPLOAD := true
 # Camera
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 TARGET_DISABLE_ARM_PIE := true
+BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB
-
-# FM
-BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 #kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=hws7300u vmalloc=578M kgsl.ptcount=16
@@ -85,7 +83,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_SOURCE := kernel/huawei/hws7300u
 TARGET_KERNEL_CONFIG := mediapad_defconfig
 
-# Usb connection to PC
+# USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun%d/file
 
 # Audio
@@ -117,9 +115,9 @@ BOARD_CUSTOM_GRAPHICS:= ../../../device/huawei/hws7300u/recovery/graphics.c
 # TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 # TW_EXTERNAL_STORAGE_MOUNT_POINT := "/external_sd"
 # TW_FLASH_FROM_STORAGE := true
+# TW_CUSTOM_BATTERY_PATH := "/sys/class/power_supply/battery_gauge/"
 # RECOVERY_SDCARD_ON_DATA := true
 
 # Hacks
 TARGET_NO_HW_VSYNC := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
-BOARD_USES_LEGACY_QCOM := true
