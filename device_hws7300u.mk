@@ -234,12 +234,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.google.locationfeatures=1 \
     dalvik.vm.dexopt-flags=m=y
     
-#Goo.im
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.goo.developerid=zyr3x \
-    ro.goo.board=hws7300u \
-    ro.goo.rom=AOKPMR1hws7300u \
-    ro.goo.version=$(shell date +%Y%m%d)
     
 # proprietary side of the device
 $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)
