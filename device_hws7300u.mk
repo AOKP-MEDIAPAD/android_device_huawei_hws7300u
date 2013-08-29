@@ -129,16 +129,6 @@ PRODUCT_PACKAGES += \
     e2fsck \
     setup_fs
 
-# Bt
-PRODUCT_PACKAGES += \
-    bluetoothd \
-    hciconfig \
-    hcitool \
-    brcm_patchram_plus
-
-PRODUCT_COPY_FILES += \
-    device/huawei/hws7300u/prebuilt/etc/dbus.conf:system/etc/dbus.conf
-
 # Boot ramdisk
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/root/fstab.hws7300u:root/fstab.hws7300u \
@@ -155,7 +145,6 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.modem_links.sh:system/etc/init.qcom.modem_links.sh \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.mdm_links.sh:system/etc/init.qcom.mdm_links.sh \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
-    device/huawei/hws7300u/prebuilt/etc/init.brcm.bt.sh:system/etc/init.brcm.bt.sh \
     device/huawei/hws7300u/prebuilt/etc/init.bt.sh:system/etc/init.bt.sh \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
