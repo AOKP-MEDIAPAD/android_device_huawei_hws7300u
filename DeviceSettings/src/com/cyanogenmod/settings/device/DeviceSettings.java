@@ -34,6 +34,9 @@ public class DeviceSettings extends PreferenceActivity implements OnSharedPrefer
     public static final String KEY_WLAN_MAC = "wlan_mac";
     public static final String KEY_EXT_INT = "ext_internal";
 
+    public static final String KEY_CAPACITY = "pref_battery_capacity";
+    public static final String KEY_VOLT = "pref_battery_volt";
+
     public static final String PROP_COLOR_ENHANCE = "persist.sys.color.enhance";
     public static final String PROP_WLAN_MAC = "persist.wlan.mac";
     public static final String PROP_EXT_INTERNAL = "persist.extinternal";
@@ -70,6 +73,8 @@ public class DeviceSettings extends PreferenceActivity implements OnSharedPrefer
 			new CMDProcessor().su.run("echo "+(mExtInternal.isChecked() ? "1" : "0")+" > /data/system/extinternal");
 		}
 
+
+
         return false;
     }
 
@@ -82,6 +87,23 @@ public class DeviceSettings extends PreferenceActivity implements OnSharedPrefer
 			int dpi = Integer.valueOf(sharedPreferences.getString(KEY_DPI, "213"));
 			setLcdDensity(dpi);	
 		}
+
+
+        if(key.equals(KEY_CAPACITY))
+        {
+            int cap = Integer.valueOf(sharedPreferences.getString(KEY_CAPACITY, "15"));
+            Helpers.getMount("rw");
+            new CMDProcessor().su.run("echo "+cap+" > /system/etc/coulometer/bq27510_min_capacity");
+            Helpers.getMount("ro");
+        }
+
+        if(key.equals(KEY_VOLT))
+        {
+            int vol = Integer.valueOf(sharedPreferences.getString(KEY_VOLT, "3500"));
+            Helpers.getMount("rw");
+            new CMDProcessor().su.run("echo "+vol+" > /system/etc/coulometer/bq27510_min_volt");
+            Helpers.getMount("ro");
+        }
 	
     }
 

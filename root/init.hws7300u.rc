@@ -1,18 +1,30 @@
 import init.hws7300u.usb.rc
 
 on init
+   
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
     mount debugfs debugfs /sys/kernel/debug
 
+
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
+
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage 0550 system sdcard_r
     mkdir /storage/emulated 0555 root root
+
+    mkdir /storage/sdcard0 0775 system system
     mkdir /storage/sdcard1 0775 system system
+    mkdir /storage/usbdisk 0700 root root
     mkdir /storage/usbdisk0 0775 system system
 
-    export EXTERNAL_STORAGE /storage/emulated/legacy
+    symlink /storage/sdcard0 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+    
+    export EXTERNAL_STORAGE  /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
@@ -366,7 +378,9 @@ service amp_unload /system/bin/amploader -u
     disabled
     oneshot
 
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c /data/misc/wifi/wpa_supplicant.conf
+service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c /data/misc/wifi/wpa_supplicant.conf \
+    -O/data/misc/wifi/sockets \
+    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     user root
     group wifi inet
     class main
@@ -374,7 +388,7 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c /data/misc/w
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -BKLG
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABKDLG
     class late_start
     disabled
     oneshot
@@ -384,7 +398,7 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
+service dhcpcd_bnep0 /system/bin/dhcpcd -aABKDLG
     disabled
     oneshot
 
@@ -549,6 +563,18 @@ service sensor_daemon /system/bin/sensor_daemon
 service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
     class late_start
     oneshot
+
+#sdcard daemon
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
+    class late_start
+    disabled
 
 on property:ro.fuse_sdcard=true
     start sdcard

@@ -18,6 +18,12 @@
     <string name="title_ext_internal">Swap internal and external storages</string>
     <string name="summary_ext_internal">Reboot is required for changes to take effect (use it on your own risk!)</string>
 
+    <string name="title_battery">Battery tweaks</string>
+    <string name="title_battery_capacity">The minimum value of charge</string>
+    <string name="summary_battery_capacity">Minimum value of charge at which the tweak will be enabled</string>
+    <string name="title_battery_volt">Minimal value of voltage</string>
+    <string name="summary_battery_volt">Minimal value of voltage at which the tweak will be enabled</string>
+
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
 

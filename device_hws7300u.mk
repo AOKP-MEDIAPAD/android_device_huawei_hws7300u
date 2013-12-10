@@ -142,7 +142,7 @@ PRODUCT_COPY_FILES += \
 # Boot ramdisk
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/root/fstab.hws7300u:root/fstab.hws7300u \
-    device/huawei/hws7300u/root/ueventd.rc:root/ueventd.rc \
+    device/huawei/hws7300u/root/ueventd.rc:root/ueventd.hws7300u.rc \
     device/huawei/hws7300u/root/init.hws7300u.usb.rc:root/init.hws7300u.usb.rc \
     device/huawei/hws7300u/root/init.hws7300u.rc:root/init.hws7300u.rc \
     device/huawei/hws7300u/root/init.qcom.usb.sh:root/init.qcom.usb.sh \
@@ -236,5 +236,5 @@ $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := cm_hws7300u
+PRODUCT_NAME := ev_hws7300u
 PRODUCT_DEVICE := hws7300u
