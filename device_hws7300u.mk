@@ -196,6 +196,12 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/lib/libOpenVG.so:system/lib/libOpenVG.so \
     device/huawei/hws7300u/prebuilt/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
 
+
+# Battery tweak configuration
+PRODUCT_COPY_FILES += \
+    device/huawei/hws7300u/prebuilt/etc/coulometer/bq27510_min_capacity:system/etc/coulometer/bq27510_min_capacity \
+    device/huawei/hws7300u/prebuilt/etc/coulometer/bq27510_min_volt:system/etc/coulometer/bq27510_min_volt
+    
 # Some misc configuration files
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/usr/idc/t1320.idc:system/usr/idc/t1320.idc \
