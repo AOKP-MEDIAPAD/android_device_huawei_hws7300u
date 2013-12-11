@@ -2,12 +2,14 @@
     
     <string-array name="dpi_names">
         <item>Default density</item>
+        <item>Max density</item>
         <item>High density</item>
     </string-array>
         
     <string-array name="dpi_values" translatable="false">
         <item>213</item>
         <item>160</item>
+        <item>180</item>
     </string-array>
 
 
