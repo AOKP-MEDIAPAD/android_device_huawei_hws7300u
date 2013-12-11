@@ -47,7 +47,7 @@
         <ListPreference
             android:title="@string/title_battery_capacity"
             android:key="pref_battery_capacity"
-            android:defaultValue="15"
+            android:defaultValue="-1"
             android:summary="@string/summary_battery_capacity"
             android:entries="@array/battery_cap_names"
             android:entryValues="@array/battery_cap_values"/>
