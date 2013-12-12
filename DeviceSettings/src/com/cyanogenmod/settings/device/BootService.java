@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.ServiceManager;
 import android.os.Parcel;
 import android.os.RemoteException;
+import com.cyanogenmod.settings.device.Helpers;
 import com.cyanogenmod.settings.device.CMDProcessor;
 import com.cyanogenmod.settings.device.CMDProcessor.CommandResult;
 /**
@@ -52,11 +53,25 @@ public class BootService extends Service  {
 		CommandResult result = cmd.su.runWaitFor("getprop "+key);
 		return (result.getOutput().getFirst().equals("") || result.getOutput().getFirst() == null) ? def : result.getOutput().getFirst();
             }
+            
+            private void updateBatteryProp()
+            {
+		CMDProcessor cmd = new CMDProcessor();
+
+	 	
+	 	String cap = getProp(DeviceSettings.PROP_BATTERY_MIN_CAPACITY,"-1");
+                String vol = getProp(DeviceSettings.PROP_BATTERY_MIN_VOLT,"3500");
+                
+                Helpers.getMount("rw");
+		cmd.su.run("echo "+cap+" > /system/etc/coulometer/bq27510_min_capacity");
+		cmd.su.run("echo "+vol+" > /system/etc/coulometer/bq27510_min_volt");
+		Helpers.getMount("ro");
+            }
 
             @Override
             protected Void doInBackground(Void... args) {
-		CMDProcessor cmd = new CMDProcessor();
-
+			updateBatteryProp();
+            
 			if( getProp(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
 			{
 				try {

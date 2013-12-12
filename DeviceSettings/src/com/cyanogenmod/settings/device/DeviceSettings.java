@@ -41,7 +41,8 @@ public class DeviceSettings extends PreferenceActivity implements OnSharedPrefer
     public static final String PROP_WLAN_MAC = "persist.wlan.mac";
     public static final String PROP_EXT_INTERNAL = "persist.extinternal";
     public static final String PROP_HW_OVERLAY = "persist.hw.overlay";
-
+    public static final String PROP_BATTERY_MIN_CAPACITY = "persist.battery.min_capacity";
+    public static final String PROP_BATTERY_MIN_VOLT = "persist.battery.min_volt";
     private CheckBoxPreference mPrefColor;
     private Preference mPrefMac;
     private CheckBoxPreference  mExtInternal;
@@ -92,6 +93,7 @@ public class DeviceSettings extends PreferenceActivity implements OnSharedPrefer
         if(key.equals(KEY_CAPACITY))
         {
             int cap = Integer.valueOf(sharedPreferences.getString(KEY_CAPACITY, "15"));
+            setProp(PROP_BATTERY_MIN_CAPACITY, cap + "");
             Helpers.getMount("rw");
             new CMDProcessor().su.run("echo "+cap+" > /system/etc/coulometer/bq27510_min_capacity");
             Helpers.getMount("ro");
@@ -100,6 +102,7 @@ public class DeviceSettings extends PreferenceActivity implements OnSharedPrefer
         if(key.equals(KEY_VOLT))
         {
             int vol = Integer.valueOf(sharedPreferences.getString(KEY_VOLT, "3500"));
+            setProp(PROP_BATTERY_MIN_VOLT, vol + "");
             Helpers.getMount("rw");
             new CMDProcessor().su.run("echo "+vol+" > /system/etc/coulometer/bq27510_min_volt");
             Helpers.getMount("ro");
