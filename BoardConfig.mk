@@ -36,8 +36,10 @@ WIFI_DRIVER_MODULE_ARG      := "firmware_path=/etc/wifi/rtecdc-bcm4329.bin nvram
 BOARD_HAVE_HUAWEI_WIFI := true
 
 # Bluetooth
-# BOARD_HAVE_BLUETOOTH := true
-# BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/hws7300u/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/huawei/hws7300u/bluetooth/vnd_hws7300u.txt
 
 # QCOM hardware
 TARGET_QCOM_DISPLAY_VARIANT := legacy
