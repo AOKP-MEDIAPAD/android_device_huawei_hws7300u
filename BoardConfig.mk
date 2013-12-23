@@ -72,8 +72,9 @@ BOARD_EGL_CFG := device/huawei/hws7300u/prebuilt/etc/egl.cfg
 
 # Webkit
 USE_SET_METADATA := false
-#ENABLE_WEBGL := true
-#TARGET_FORCE_CPU_UPLOAD := true
+ENABLE_WEBGL := true
+TARGET_FORCE_CPU_UPLOAD := true
+PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 
 # Camera
 BOARD_NEEDS_MEMORYHEAPPMEM := true

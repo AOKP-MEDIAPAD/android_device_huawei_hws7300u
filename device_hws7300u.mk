@@ -233,7 +233,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
     dalvik.vm.lockprof.threshold=500 \
     ro.com.google.locationfeatures=1 \
-    dalvik.vm.dexopt-flags=m=y
+    dalvik.vm.dexopt-flags=m=y \
+    persist.webview.provider=classic
 
 # Proprietary side of the device
 $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)
