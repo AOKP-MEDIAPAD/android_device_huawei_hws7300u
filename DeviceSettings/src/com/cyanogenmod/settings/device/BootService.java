@@ -67,11 +67,18 @@ public class BootService extends Service  {
 		cmd.su.run("echo "+vol+" > /system/etc/coulometer/bq27510_min_volt");
 		Helpers.getMount("ro");
             }
+	    
+	    private void startBlueDroidHack()
+            {
+		CMDProcessor cmd = new CMDProcessor();
+		cmd.su.run("/system/bin/bluetooth_power.sh &");
+
+            }
 
             @Override
             protected Void doInBackground(Void... args) {
 			updateBatteryProp();
-            
+			startBlueDroidHack();
 			if( getProp(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
 			{
 				try {
