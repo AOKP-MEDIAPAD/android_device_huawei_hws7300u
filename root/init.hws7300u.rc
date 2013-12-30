@@ -6,14 +6,18 @@ on init
 
     mount debugfs debugfs /sys/kernel/debug
 
-    chmod 0701 /mnt/media_rw
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage 0550 system sdcard_r
     mkdir /storage/emulated 0555 root root
-    mkdir /storage/sdcard1 0775 system system
-    mkdir /storage/usbdisk 0000 system system
-    mkdir /mnt/media_rw/sdcard1 0775 system system
-    mkdir /mnt/media_rw/usbdisk 0775 system system
+
+    #External storage directories
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
+
+    mkdir /storage/sdcard0 0700 root root
+    mkdir /storage/sdcard1 0700 root root
+    mkdir /storage/usbdisk 0700 root root
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export SECONDARY_STORAGE /storage/sdcard1
@@ -31,10 +35,11 @@ on init
     symlink /storage/usbdisk /mnt/usbdisk
 
     mkdir /devlog 0700 root root
+
     symlink /data/usercust /usercust
     mkdir /mnt/tmp 0000 system system
     mkdir /tmpdata 0771 system system
-    mkdir /persist 0771 system system
+    
 
     chmod 0777 /dev/lcd_ctrl
     chmod 0777 /system/bin/diagd
@@ -111,9 +116,9 @@ on boot
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-    chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
-    chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
-    
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+
     chmod 0660 /sys/module/bluetooth_power/parameters/power
 
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -179,7 +184,7 @@ on boot
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     # Remove write permissions to video related nodes
-    chmod 0660 /sys/devices/virtual/graphics/fb1/video_mode
+    chmod 0664 /sys/devices/virtual/graphics/fb1/video_mode
     chmod 0440 /sys/devices/virtual/graphics/fb1/video_mode_str
     chmod 0440 /sys/devices/virtual/graphics/fb1/connected
     chmod 0440 /sys/devices/virtual/graphics/fb1/edid_modes
@@ -187,8 +192,8 @@ on boot
     chmod 0660 /sys/devices/virtual/graphics/fb1/hpd
     chmod 0440 /sys/devices/virtual/graphics/fb1/3d_present
     chmod 0440 /sys/devices/virtual/graphics/fb1/hdcp_present
-    chmod 0660 /sys/devices/virtual/graphics/fb1/format_3d
-    chmod 0660 /sys/devices/virtual/graphics/fb1/edid_3d_modes
+    chmod 0664 /sys/devices/virtual/graphics/fb1/format_3d
+    chmod 0664 /sys/devices/virtual/graphics/fb1/edid_3d_modes
     chmod 0440 /sys/devices/virtual/graphics/fb1/underscan
     chmod 0440 /sys/devices/virtual/graphics/fb1/dvi
     chmod 0440 /sys/devices/virtual/graphics/fb1/pa
@@ -554,7 +559,7 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /s
     class late_start
     disabled
 
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/usbdisk /storage/usbdisk
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d  /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
 

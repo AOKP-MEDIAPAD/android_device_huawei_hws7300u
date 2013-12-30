@@ -19,4 +19,4 @@
 /dev/block/mmcblk0p19	/boot		emmc		defaults		recoveryonly
 /dev/block/mmcblk0p17	/recovery	emmc		defaults		recoveryonly
 /dev/block/mmcblk0p18	/recovery2	emmc		defaults		recoveryonly
-/dev/block/mmcblk1p1		/external_sd	auto		defaults		recoveryonly
+/dev/block/mmcblk1p1	/external_sd	auto		defaults		recoveryonly
