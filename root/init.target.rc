@@ -32,7 +32,8 @@ on early-init
 
 on fs
     mount_all /fstab.hws7300u
-
+    setprop ro.crypto.fuse_sdcard true
+   
     chown nobody shell /system/bin/RescueStarter
     chmod 755 /system/bin/RescueStarter
     chown nobody shell /system/bin/RescueServer
