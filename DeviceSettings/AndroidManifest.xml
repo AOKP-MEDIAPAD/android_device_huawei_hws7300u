@@ -15,7 +15,7 @@
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-		  <category android:name="android.intent.category.LAUNCHER"></category>
+		<!--  <category android:name="android.intent.category.LAUNCHER"></category> -->
                 <action android:name="com.cyanogenmod.action.LAUNCH_DEVICE_SETTINGS"/>
             </intent-filter>
         </activity>
