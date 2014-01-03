@@ -129,16 +129,6 @@ PRODUCT_PACKAGES += \
     e2fsck \
     setup_fs
 
-# Bt
-#PRODUCT_PACKAGES += \
-#    bluetoothd \
-#    hciconfig \
-#    hcitool \
-#    brcm_patchram_plus
-
-#PRODUCT_COPY_FILES += \
-#    device/huawei/hws7300u/prebuilt/etc/dbus.conf:system/etc/dbus.conf
-
 # Boot ramdisk
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/root/fstab.hws7300u:root/fstab.hws7300u \
@@ -233,7 +223,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.lockprof.threshold=500 \
     ro.com.google.locationfeatures=1 \
     dalvik.vm.dexopt-flags=m=y \
-    persist.webview.provider=classic
+    persist.webview.provider=classic \
+    lockscreen.rot_override=true \
 
 # Proprietary side of the device
 $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)
