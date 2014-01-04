@@ -68,17 +68,9 @@ public class BootService extends Service  {
 		Helpers.getMount("ro");
             }
 	    
-	    private void startBlueDroidHack()
-            {
-		CMDProcessor cmd = new CMDProcessor();
-		cmd.su.run("/system/bin/bluetooth_power.sh &");
-
-            }
-
-            @Override
+	    @Override
             protected Void doInBackground(Void... args) {
 			updateBatteryProp();
-			startBlueDroidHack();
 			if( getProp(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
 			{
 				try {
