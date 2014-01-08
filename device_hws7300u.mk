@@ -109,10 +109,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libnetcmdiface
 
-# QRNGD
-PRODUCT_PACKAGES += \
-    qrngd
-
 # Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
