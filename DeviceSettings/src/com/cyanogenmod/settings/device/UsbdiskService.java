@@ -24,15 +24,20 @@ public class UsbdiskService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startid) {
         (new Timer()).scheduleAtFixedRate(new TimerTask() {
+
             final CMDProcessor cmd = new CMDProcessor();
             final Handler handler = new Handler();
             final File usbdrive = new File("/dev/bus/usb/001/");
+            final String storage = "/storage/usbdisk ";
+            final String options = "rw,nosuid,nodev,umask=0,dmask=0,fmask=0";
 
             EasyPair<String, String> easyPair;
             CMDProcessor.CommandResult result;
 
             Boolean status = false;
+            File[] usbList = null;
             String usbName = null;
+            String[] usbNames = null;
 
             @Override
             public void run() {
@@ -47,40 +52,46 @@ public class UsbdiskService extends Service {
 
                     public void run() {
 
-                        if(  usbdrive.listFiles() != null)
-                        {
-                            usbName = getUsbName();
+                        usbList = usbdrive.listFiles();
 
-                            if( usbdrive.listFiles().length > 0 && status == false)
+                        if(  usbList != null)
+                        {
+                            if( usbList.length > 1 && status == false)
                             {
-                                if(usbName != null )
+                                usbName = getUsbName();
+
+                                if( usbName != null )
                                 {
+                                    usbNames = usbName.trim().split("\n");
+                                    if(usbNames.length > 1)
+                                        usbName = usbNames[usbNames.length-1];
+
                                     Log.d("UsbdiskService", "Usbdrive mount : " + usbName);
 
-                                    cmd.su.runWaitFor("mount -t vfat -o rw,nosuid,nodev,umask=0,dmask=0,fmask=0 "+usbName+" /storage/usbdisk " +
-                                            " && mount -t ext4 -o rw,nosuid,nodev,umask=0,dmask=0,fmask=0 "+usbName+" /storage/" +
-                                            " && mount -t ext3 -o rw,nosuid,nodev,umask=0,dmask=0,fmask=0 "+usbName+" /storage/" +
-                                            " && mount -t ext2 -o rw,nosuid,nodev,umask=0,dmask=0,fmask=0 "+usbName+" /storage/" +
-                                            " && mount -t exfat -o rw,nosuid,nodev,umask=0,dmask=0,fmask=0 "+usbName+" /storage/" +
-                                            " && mount -t ntfs -o rw,nosuid,nodev,umask=0,dmask=0,fmask=0 "+usbName+" /storage/");
+                                    cmd.su.runWaitFor(
+                                                "mount -t vfat -o "+options +" " +usbName+" " + storage +
+                                            " && mount -t ext4 -o "+options +" "+usbName+" " + storage +
+                                            " && mount -t ext3 -o "+options +" "+usbName+" " + storage +
+                                            " && mount -t ext2 -o "+options +" "+usbName+" " + storage +
+                                            " && mount -t exfat -o "+options +" "+usbName+" " + storage +
+                                            " && mount -t ntfs -o "+options +" "+usbName+" " + storage +
+                                            " && mount.exfat -o "+options +"  "+usbName+" " + storage
+                                    );
 
                                     status = true;
                                 }
 
                             }
-                            else
+                            else if(  usbList.length == 1 )
                             {
-                                if(status == true && usbName == null)
+                                if(status == true )
                                 {
                                     status = false;
-                                    cmd.su.runWaitFor("umount /storage/usbdisk");
-                                    Log.d("UsbdiskService", "Usbdrive umount /storage/usbdisk");
+                                    cmd.su.runWaitFor("umount "+storage);
+                                    Log.d("UsbdiskService", "Usbdrive umount: "+storage);
                                 }
-
                             }
                         }
-
-
                     }
                 });
             }
@@ -101,3 +112,4 @@ public class UsbdiskService extends Service {
 
 
 }
+
