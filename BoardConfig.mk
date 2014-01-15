@@ -18,6 +18,9 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_ARMV7A := true
 
+# Scorpion
+TARGET_USE_SCORPION_BIONIC_OPTIMIZATION := true
+
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
