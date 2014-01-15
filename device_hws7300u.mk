@@ -38,8 +38,7 @@ DEVICE_PACKAGE_OVERLAYS += device/huawei/hws7300u/overlay
 
 # Modules
 PRODUCT_COPY_FILES += \
-    device/huawei/hws7300u/prebuilt/lib/modules/rpc_server_handset.ko:system/lib/modules/rpc_server_handset.ko \
-    device/huawei/hws7300u/prebuilt/lib/modules/dhd.ko:system/lib/modules/dhd.ko
+    device/huawei/hws7300u/prebuilt/lib/modules/rpc_server_handset.ko:system/lib/modules/rpc_server_handset.ko
 
 # Permissions
 PRODUCT_COPY_FILES += \
