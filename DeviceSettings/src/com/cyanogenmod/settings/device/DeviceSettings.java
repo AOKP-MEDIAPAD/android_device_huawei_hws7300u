@@ -145,31 +145,11 @@ public class DeviceSettings extends PreferenceActivity implements OnSharedPrefer
     {
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final EditText input = new EditText(this);
-
+        
         alert.setTitle(R.string.title_wlan_mac);
         alert.setView(input);
-
-        input.setText(getProp(PROP_WLAN_MAC,""));
         
-        InputFilter filter= new InputFilter() 
-        {
-            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                for (int i = start; i < end; i++) {
-                    String checkMe = String.valueOf(source.charAt(i));
-
-                    Pattern pattern = Pattern.compile("[ABCDEFabcdef0123456789]*");
-                    Matcher matcher = pattern.matcher(checkMe);
-                    boolean valid = matcher.matches();
-                    if(!valid){
-                        Log.d(TAG, "Mac char invalid");
-                        return "";
-                    }
-                }
-                return null;
-            }
-        };
-
-        input.setFilters(new InputFilter[]{filter,new InputFilter.LengthFilter(12)});
+        input.setText(getProp(PROP_WLAN_MAC,""));
         input.setInputType(InputType.TYPE_CLASS_TEXT);
 
         alert.setPositiveButton(getString(R.string.save), new DialogInterface.OnClickListener() {
