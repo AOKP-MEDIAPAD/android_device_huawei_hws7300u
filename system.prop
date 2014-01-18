@@ -50,6 +50,14 @@ persist.audio.vr.enable=false
 # lpa.decode=false
 # lpa.use-stagefright=true
 
+# hardware info
+ro.device.chipset=Qualcomm Snapdragon MSM8260
+ro.device.cpu=1.2GHz Dual Core 
+ro.device.gpu=Adreno 220
+ro.device.rear_cam=5 MP
+ro.device.front_cam=1.3 MP
+ro.device.screen_res=800x1280
+
 # hdmi
 com.qc.hardware=true
 
