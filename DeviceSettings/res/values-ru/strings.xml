@@ -13,7 +13,7 @@
     <string name="summary_lcd_enhancement_color">Более насыщенные цвета</string>
 
     <string name="title_wlan_mac">Изменение MAC-адреса</string>
-    <string name="summary_wlan_mac">Задание пользовательского wifi МАС-адреса. Пример: 00:11:AA:BB:FF</string>
+    <string name="summary_wlan_mac">Задание пользовательского wifi МАС-адреса. Пример: 00:11:22:33:44:55</string>
 
     <string name="title_ext_internal">Поменять местами внутреннюю и внешнюю память</string>
     <string name="summary_ext_internal">Для применения изменений необходима перезагрузка (использовать на свой страх и риск!)</string>
