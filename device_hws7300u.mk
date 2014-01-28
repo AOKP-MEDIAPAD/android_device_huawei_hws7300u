@@ -94,8 +94,7 @@ PRODUCT_PACKAGES += \
 
 # Device specific settings
 PRODUCT_PACKAGES += \
-    MediapadSettings \
-    hwmac
+    MediapadSettings
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -220,7 +219,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y \
     persist.webview.provider=classic \
     lockscreen.rot_override=true \
-    ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr \
 
 # Proprietary side of the device
 $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)
