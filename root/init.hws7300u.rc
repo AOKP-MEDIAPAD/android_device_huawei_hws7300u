@@ -18,7 +18,7 @@ on init
 
     #External storage directories
     mkdir /mnt/media_rw/sdcard1 0775 media_rw media_rw
-    mkdir /mnt/media_rw/sda 0775 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk 0775 media_rw media_rw
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
@@ -560,13 +560,13 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /s
     class late_start
     disabled
 
-service fuse_sda /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sda /storage/usbdisk
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
 
 on property:ro.fuse_sdcard=true
     start sdcard
-    start fuse_sda
+    start fuse_usbdisk
     start fuse_sdcard
 
 # This will make sure that sdcard service starts as late_start.

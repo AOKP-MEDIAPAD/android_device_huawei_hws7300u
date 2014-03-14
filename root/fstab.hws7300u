@@ -13,7 +13,7 @@
 
 # vold-managed volumes ("block device" is actually a sysfs devpath)
 /devices/platform/msm_sdcc.3/mmc_host/mmc1      auto    auto     defaults                                                voldmanaged=sdcard1:auto,noemulatedsd
-/devices/platform/msm_hsusb.0/usb1              /storage/usbdisk    auto     defaults                                                voldmanaged=sda:auto 
+/devices/platform/msm_hsusb.0/usb1              auto    auto     defaults                                                voldmanaged=usbdisk:auto 
 
 # recovery
 /dev/block/mmcblk0p19	/boot		emmc		defaults		recoveryonly
