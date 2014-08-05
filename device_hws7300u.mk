@@ -137,6 +137,8 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/root/init.qcom.usb.sh:root/init.qcom.usb.sh \
     device/huawei/hws7300u/root/init.target.rc:root/init.target.rc \
     device/huawei/hws7300u/root/init.qcom.sh:root/init.qcom.sh
+    
+PRODUCT_COPY_FILES +=  device/huawei/hws7300u/root/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Scripts
 PRODUCT_COPY_FILES += \
