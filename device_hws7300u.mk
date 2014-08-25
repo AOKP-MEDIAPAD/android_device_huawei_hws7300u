@@ -118,6 +118,10 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     VisualizationWallpapers \
     librs_jni
+    
+# WebKit
+PRODUCT_PACKAGES += \
+    libwebcore    
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -133,6 +137,8 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/root/init.qcom.usb.sh:root/init.qcom.usb.sh \
     device/huawei/hws7300u/root/init.target.rc:root/init.target.rc \
     device/huawei/hws7300u/root/init.qcom.sh:root/init.qcom.sh
+    
+PRODUCT_COPY_FILES +=  device/huawei/hws7300u/root/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Scripts
 PRODUCT_COPY_FILES += \
@@ -219,6 +225,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y \
     persist.webview.provider=classic \
     lockscreen.rot_override=true \
+    persist.sys.prefer_16bpp=1 
+
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 
 # Proprietary side of the device
 $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)
