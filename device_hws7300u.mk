@@ -101,8 +101,8 @@ PRODUCT_PACKAGES += \
     gps.default
 
 # Power
-PRODUCT_PACKAGES += \
-    power.msm8660
+#PRODUCT_PACKAGES += \
+#    power.msm8660
 
 # WiFi
 PRODUCT_PACKAGES += \
