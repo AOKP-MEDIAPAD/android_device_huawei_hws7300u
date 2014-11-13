@@ -1,3 +1,4 @@
 #
 # ADDITIONAL_DEFAULT_PROPERTIES
 #
+ro.secure=0
