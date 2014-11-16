@@ -73,9 +73,9 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.primary.msm8660 \
+   #audio.primary.msm8660 \
     audio.a2dp.default \
-    audio_policy.msm8660 \
+   #audio_policy.msm8660 \
     libaudio-resampler \
     libaudioutils
 
@@ -97,8 +97,8 @@ PRODUCT_PACKAGES += \
     MediapadSettings
 
 # GPS
-PRODUCT_PACKAGES += \
-    gps.default
+#PRODUCT_PACKAGES += \
+#    gps.default
 
 # Power
 #PRODUCT_PACKAGES += \
