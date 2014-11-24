@@ -1,4 +1,6 @@
-import init.hws7300u.usb.rc
+import /init.target.rc
+import /init.hws7300u.usb.rc
+
 
 on init
     # Set permissions for persist partition
@@ -370,9 +372,7 @@ service amp_unload /system/bin/amploader -u
     disabled
     oneshot
 
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c /data/misc/wifi/wpa_supplicant.conf \
-    -O/data/misc/wifi/sockets \
-    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
+service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c /system/etc/wifi/wpa_supplicant.conf
     user root
     group wifi inet
     class main

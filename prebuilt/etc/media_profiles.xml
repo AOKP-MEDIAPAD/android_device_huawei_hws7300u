@@ -195,7 +195,7 @@
              channels="2" />
     </EncoderProfile>
 
-     <EncoderProfile quality="vga" fileFormat="mp4" duration="30">
+     <!--<EncoderProfile quality="vga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
              width="640"
@@ -206,7 +206,7 @@
              bitRate="156000"
              sampleRate="48000"
              channels="2" />
-    </EncoderProfile>
+    </EncoderProfile>-->
 
     <EncoderProfile quality="qvga" fileFormat="mp4" duration="30">
       <Video codec="h264"
@@ -413,7 +413,7 @@
              channels="2" />
     </EncoderProfile>-->
 
-    <EncoderProfile quality="wvga" fileFormat="mp4" duration="30">
+   <!-- <EncoderProfile quality="wvga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
              width="800"
@@ -437,7 +437,7 @@
              bitRate="156000"
              sampleRate="48000"
              channels="2" />
-    </EncoderProfile>
+    </EncoderProfile>-->
 
     <EncoderProfile quality="qvga" fileFormat="mp4" duration="30">
       <Video codec="h264"

@@ -15,12 +15,12 @@
                 android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-		<!--<category android:name="android.intent.category.LAUNCHER"></category> -->
+		<category android:name="android.intent.category.LAUNCHER"></category>
                 <action android:name="com.cyanogenmod.action.LAUNCH_DEVICE_SETTINGS"/>
             </intent-filter>
         </activity>
 
-        <receiver android:name=".Boot"
+         <!--<receiver android:name=".Boot"
                   android:enabled="true"
                   android:exported="false"
                   android:label="BootDeviceSettings"
@@ -31,8 +31,8 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".BootService" />
-        <service android:name=".UsbdiskService" />
+       <service android:name=".BootService" />
+        <service android:name=".UsbdiskService" />-->
 
     </application>
 </manifest>

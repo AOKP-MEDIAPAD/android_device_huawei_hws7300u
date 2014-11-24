@@ -34,7 +34,7 @@ WIFI_DRIVER_MODULE_NAME     := "dhd"
 BOARD_WLAN_DEVICE           := bcm4329
 WIFI_DRIVER_FW_PATH_STA     := "/etc/wifi/rtecdc-bcm4329.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/etc/wifi/rtecdc-apsta-bcm4329.bin"
-WIFI_DRIVER_MODULE_ARG      := "firmware_path=/etc/wifi/rtecdc-bcm4329.bin nvram_path=/etc/wifi/nvram-bcm4329.txt"
+WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/etc/wifi/rtecdc-bcm4329.bin nvram_path=/system/etc/wifi/nvram-bcm4329.txt"
 BOARD_HAVE_HUAWEI_WIFI := true
 
 # Bluetooth
@@ -77,7 +77,11 @@ USE_SET_METADATA := false
 # Webkit
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
-PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+#PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
+
+#art hacks
+ART_USE_SMALL_NMSC := true
+ART_DONT_CHECK_GAP := true
 
 # Camera
 BOARD_NEEDS_MEMORYHEAPPMEM := true
