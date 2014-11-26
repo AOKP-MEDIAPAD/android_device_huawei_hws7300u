@@ -53,6 +53,12 @@ public class BootService extends Service  {
 		CommandResult result = cmd.su.runWaitFor("getprop "+key);
 		return (result.getOutput().getFirst().equals("") || result.getOutput().getFirst() == null) ? def : result.getOutput().getFirst();
             }
+
+	    private void hackWIFI()
+            {
+		CMDProcessor cmd = new CMDProcessor();
+		cmd.su.run("wifihack&");
+            }
             
             private void updateBatteryProp()
             {
@@ -71,6 +77,7 @@ public class BootService extends Service  {
 	    @Override
             protected Void doInBackground(Void... args) {
 			updateBatteryProp();
+			hackWIFI();
 			if( getProp(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
 			{
 				try {

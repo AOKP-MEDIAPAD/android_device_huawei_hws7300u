@@ -20,7 +20,7 @@ on init
 
     #External storage directories
     mkdir /mnt/media_rw/sdcard1 0775 media_rw media_rw
-    mkdir /mnt/media_rw/sda 0775 media_rw media_rw
+    mkdir /mnt/media_rw/usbdisk 0775 media_rw media_rw
 
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
@@ -54,7 +54,8 @@ on early-boot
 on post-fs-data
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
     chmod 0666 /sys/class/rfkill/rfkill0/state
-
+    setenforce 0
+    restorecon -FR /data/media 
     # we will remap this as /storage/sdcard0 with the sdcard fuse tool
     mkdir /data/media 0775 media_rw media_rw
     chown media_rw media_rw /data/media
@@ -63,10 +64,10 @@ on post-fs-data
     chown root root /devlog
     chmod 0700 /devlog
 
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    mkdir /data/misc/wifi 0777 wifi wifi
+    mkdir /data/misc/wifi/sockets 0777 wifi wifi
+    mkdir /data/misc/wifi/wpa_supplicant 0777 wifi wifi
+    mkdir /data/misc/dhcp 0777 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
     mkdir /data/misc/audio 0770 audio audio
@@ -372,13 +373,16 @@ service amp_unload /system/bin/amploader -u
     disabled
     oneshot
 
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c /system/etc/wifi/wpa_supplicant.conf
+service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c /system/etc/wifi/wpa_supplicant.conf \
+    -O/data/misc/wifi/sockets \
+    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     user root
     group wifi inet
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABKDLG
     class late_start
@@ -560,13 +564,13 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /s
     class late_start
     disabled
 
-service fuse_sda /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sda /storage/usbdisk
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
 
 on property:ro.fuse_sdcard=true
     start sdcard
-    start fuse_sda
+    start fuse_usbdisk
     start fuse_sdcard
 
 # This will make sure that sdcard service starts as late_start.

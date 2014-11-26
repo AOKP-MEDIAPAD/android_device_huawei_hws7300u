@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-         <!--<receiver android:name=".Boot"
+        <receiver android:name=".Boot"
                   android:enabled="true"
                   android:exported="false"
                   android:label="BootDeviceSettings"
@@ -32,7 +32,7 @@
         </receiver>
 
        <service android:name=".BootService" />
-        <service android:name=".UsbdiskService" />-->
+       <service android:name=".UsbdiskService" />
 
     </application>
 </manifest>
