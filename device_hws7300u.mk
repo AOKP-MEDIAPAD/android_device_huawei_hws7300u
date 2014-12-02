@@ -73,11 +73,16 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    #audio.primary.msm8660 \
+    audio.primary.msm8660 \
     audio.a2dp.default \
-    #audio_policy.msm8660 \
+    audio_policy.msm8660 \
     libaudio-resampler \
-    libaudioutils
+    libaudioutils \
+    libdashplayer \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += \
+    qcmediaplayer
 
 # Omx
 PRODUCT_PACKAGES += \
@@ -101,11 +106,12 @@ PRODUCT_PACKAGES += \
     gps.default
 
 # Power
-#PRODUCT_PACKAGES += \
-#    power.msm8660
+PRODUCT_PACKAGES += \
+    power.msm8660
 
 # WiFi
 PRODUCT_PACKAGES += \
+    lpm.rc \
     wpa_supplicant \
     libnetcmdiface
 
@@ -120,10 +126,6 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     librs_jni
     
-# WebKit
-#PRODUCT_PACKAGES += \
-#    libwebcore    
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck \
@@ -208,6 +210,9 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/huawei/hws7300u/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/huawei/hws7300u/prebuilt/etc/audio_effects.conf:system/etc/audio_effects.conf \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     device/huawei/hws7300u/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
 
 # Init.d scripts	

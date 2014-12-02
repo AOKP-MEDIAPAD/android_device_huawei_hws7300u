@@ -12,7 +12,7 @@ TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
-TARGET_CPU_VARIANT := cortex-a8
+TARGET_CPU_VARIANT := scorpion
 TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ARCH_ARM_HAVE_NEON := true
@@ -36,6 +36,9 @@ WIFI_DRIVER_FW_PATH_STA     := "/etc/wifi/rtecdc-bcm4329.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/etc/wifi/rtecdc-apsta-bcm4329.bin"
 WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/etc/wifi/rtecdc-bcm4329.bin nvram_path=/system/etc/wifi/nvram-bcm4329.txt"
 BOARD_HAVE_HUAWEI_WIFI := true
+TARGET_NO_WIFI_HAL := true
+TARGET_NO_NETD_AF_INET := true
+
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -59,7 +62,7 @@ BOARD_USE_MHEAP_SCREENSHOT := true
 BOARD_EGL_NEEDS_FNW := true
 
 # GPS
-BOARD_USES_QCOM_GPS := true
+TARGET_GPS_HAL_PATH := $(LOCAL_PATH)/gps
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := default
 
@@ -80,7 +83,7 @@ TARGET_FORCE_CPU_UPLOAD := true
 #PRODUCT_PREBUILT_WEBVIEWCHROMIUM := yes
 
 #art hacks
-ART_USE_SMALL_NMSC := true
+ART_USE_CUSTOM_NMSC := 32
 ART_DONT_CHECK_GAP := true
 
 # Camera
@@ -105,6 +108,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storag
 
 # Radio
 BOARD_RIL_NO_CELLINFOLIST := true
+BOARD_PROVIDES_LIBRIL := true
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -141,3 +145,13 @@ RECOVERY_FSTAB_VERSION := 2
 USE_SET_METADATA := false
 TARGET_NO_HW_VSYNC := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK
+
+# Reduce font size
+EXTENDED_FONT_FOOTPRINT := false
+SMALLER_FONT_FOOTPRINT := true
+MINIMAL_FONT_FOOTPRINT := true
+
+# Remove packages
+REMOVE_PRODUCT_PACKAGES += Gallery2 Exchange2 LiveWallpapers Galaxy4 Camera2
+REMOVE_PRODUCT_PACKAGES += Email
+
