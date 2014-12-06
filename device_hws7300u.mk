@@ -24,8 +24,10 @@ PRODUCT_PROPERTY_OVERRIDES := \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=30 \
     tf.enable=y \
+    media.stagefright.use-awesome=true \
     drm.service.enabled=true
-
+   
+    
 include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
 
 # Inherit from those products. Most specific first.
@@ -213,6 +215,7 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
     device/huawei/hws7300u/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
 
 # Init.d scripts	
