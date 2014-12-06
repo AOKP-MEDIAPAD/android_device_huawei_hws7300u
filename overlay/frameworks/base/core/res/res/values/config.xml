@@ -22,7 +22,7 @@
 <resources>
 
     <!-- True will enable the electron beam screen-off animation. -->
-    <bool name="config_screenOffAnimation">false</bool>
+<!--    <bool name="config_screenOffAnimation">false</bool> -->
 	
     <!-- NOTE: Set to true for now so electron beam isn't used. This causes a screen lockup on our QCOM's right now. -->
     <bool name="config_animateScreenLights">true</bool>
@@ -215,7 +215,7 @@
     </integer-array>
 
     <!-- Boolean indicating whether the start command should be called on the wireless interface when starting the SoftAp -->
-    <bool name="config_wifiApStartInterface">true</bool>
+<!--    <bool name="config_wifiApStartInterface">true</bool> -->
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>

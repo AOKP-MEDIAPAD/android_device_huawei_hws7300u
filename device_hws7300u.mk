@@ -144,7 +144,7 @@ PRODUCT_PACKAGES += \
 # Boot ramdisk
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/root/fstab.hws7300u:root/fstab.hws7300u \
-    device/huawei/hws7300u/root/ueventd.rc:root/ueventd.rc \
+    device/huawei/hws7300u/root/ueventd.rc:root/ueventd.hws7300u.rc \
     device/huawei/hws7300u/root/init.hws7300u.usb.rc:root/init.hws7300u.usb.rc \
     device/huawei/hws7300u/root/init.hws7300u.rc:root/init.hws7300u.rc \
     device/huawei/hws7300u/root/init.qcom.usb.sh:root/init.qcom.usb.sh \

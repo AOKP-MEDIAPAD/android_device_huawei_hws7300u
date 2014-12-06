@@ -1,4 +1,4 @@
-ifneq ($(USE_CAMERA_STUB),true)
+ifneq ($(USE_CAMERA_STUB),false)
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
 ifneq ($(BUILD_TINY_ANDROID),true)
 
