@@ -19,7 +19,7 @@ PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/huawei/hws7300u/overlay
-
+    
 include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
 
 # Inherit from those products. Most specific first.
@@ -88,7 +88,10 @@ PRODUCT_PACKAGES += \
     libc2dcolorconvert \
     libdashplayer \
     qcmediaplayer
-
+    
+PRODUCT_BOOT_JARS += \
+    qcmediaplayer
+    
 # Device specific settings
 PRODUCT_PACKAGES += \
     MediapadSettings
@@ -110,10 +113,15 @@ PRODUCT_COPY_FILES += \
 # QRNGD
 PRODUCT_PACKAGES += \
     qrngd
+    
+# WiFi
+PRODUCT_PACKAGES += \
+    lpm.rc \
+    wpa_supplicant \
+    libnetcmdiface
 
 # Misc
 PRODUCT_PACKAGES += \
-    #hwmac \
     com.android.future.usb.accessory
 
 # Live Wallpapers
@@ -208,7 +216,11 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
     device/huawei/hws7300u/prebuilt/etc/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw
 
-
+# Battery tweak configuration
+PRODUCT_COPY_FILES += \
+    device/huawei/hws7300u/prebuilt/etc/coulometer/bq27510_min_capacity:system/etc/coulometer/bq27510_min_capacity \
+    device/huawei/hws7300u/prebuilt/etc/coulometer/bq27510_min_volt:system/etc/coulometer/bq27510_min_volt
+    
 # Some misc configuration files
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/thermald.conf:system/etc/thermald.conf \
@@ -226,6 +238,10 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/huawei/hws7300u/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/huawei/hws7300u/prebuilt/etc/audio_effects.conf:system/etc/audio_effects.conf \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
     device/huawei/hws7300u/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf
 
 # TWRP
@@ -250,6 +266,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=eth0 \
     wifi.supplicant_scan_interval=30 \
     tf.enable=y \
+    media.stagefright.use-awesome=true \
     drm.service.enabled=true
 
 # Proprietary side of the device
