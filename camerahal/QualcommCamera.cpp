@@ -65,6 +65,11 @@ camera_module_t HAL_MODULE_INFO_SYM = {
 camera_device_ops_t camera_ops = {
   set_preview_window: android::set_preview_window,
   set_callbacks:      android::set_callbacks,
+  
+  /*get_vendor_tag_ops: NULL, 
+  open_legacy: NULL, 
+  reserved: {0},
+  */
   enable_msg_type:    android::enable_msg_type,
   disable_msg_type:   android::disable_msg_type,
   msg_type_enabled:   android::msg_type_enabled,

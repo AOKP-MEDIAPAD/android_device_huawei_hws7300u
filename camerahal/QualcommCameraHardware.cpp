@@ -1427,9 +1427,9 @@ QualcommCameraHardware::QualcommCameraHardware()
     for (int i = 0; i < kRecordBufferCount; i++)
         metadata_memory[i] = NULL;
     mJpegLiveSnapMapped = NULL;
-    if(HAL_currentCameraMode == CAMERA_SUPPORT_MODE_3D){
+   /* if(HAL_currentCameraMode == CAMERA_SUPPORT_MODE_3D){
         mIs3DModeOn = true;
-    }
+    }*/
     /* TODO: Will remove this command line interface at end */
     property_get("persist.camera.hal.3dmode", value, "0");
     int mode = atoi(value);
@@ -3268,7 +3268,7 @@ void QualcommCameraHardware::runHFRThread(void *data)
                         MSM_PMEM_THUMBNAIL,
                         false, false);
                     if (munmap((void *)(mThumbnailMapped[cnt]),handle->size ) == -1) {
-                      ALOGE("StopPreview : Error un-mmapping the thumbnail buffer %d", index);
+                      ALOGE("StopPreview : Error un-mmapping the thumbnail buffer %d", cnt);
                     }
                     mThumbnailBuffer[cnt] = NULL;
                     mThumbnailMapped[cnt] = NULL;
@@ -4420,7 +4420,7 @@ void QualcommCameraHardware::deinitRaw()
                         MSM_PMEM_THUMBNAIL,
                         false, false);
                      if (munmap((void *)(mThumbnailMapped[cnt]),handle->size ) == -1) {
-                       ALOGE("deinitraw : Error un-mmapping the thumbnail buffer %d", index);
+                       ALOGE("deinitraw : Error un-mmapping the thumbnail buffer %d", cnt);
                      }
                      mThumbnailBuffer[cnt] = NULL;
                      mThumbnailMapped[cnt] = NULL;
@@ -5155,7 +5155,7 @@ void QualcommCameraHardware::stopPreview()
                         MSM_PMEM_THUMBNAIL,
                         false, false);
                     if (munmap((void *)(mThumbnailMapped[cnt]),handle->size ) == -1) {
-                      ALOGE("StopPreview : Error un-mmapping the thumbnail buffer %d", index);
+                      ALOGE("StopPreview : Error un-mmapping the thumbnail buffer %d", cnt);
                     }
                     mThumbnailMapped[cnt] = NULL;
                  }
