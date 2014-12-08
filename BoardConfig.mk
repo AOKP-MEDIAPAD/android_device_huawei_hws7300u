@@ -40,6 +40,7 @@ WIFI_DRIVER_MODULE_NAME := "dhd"
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wifi/fw_bcmdhd.bin nvram_path=/system/etc/wifi/nvram-bcm4329.txt"
 WIFI_DRIVER_MODULE_AP_ARG := "firmware_path=/system/etc/wifi/fw_bcmdhd_apsta.bin nvram_path=/system/etc/wifi/nvram-bcm4329.txt"
 BOARD_LEGACY_NL80211_STA_EVENTS := true
+BOARD_HAVE_HUAWEI_WIFI := true
 
 # Bluetooth                                           `
 BOARD_HAVE_BLUETOOTH := true
