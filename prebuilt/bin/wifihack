@@ -1,0 +1,13 @@
+#!/system/bin/sh
+again="yes"
+while [ "$again" = "yes" ] 
+do
+   status=`getprop init.svc.wpa_supplicant`   
+   if [ "$status" = "running" ]
+   then
+      sleep 10
+      wpa_supplicant -Dwext -iwlan0 -c /data/misc/wifi/wpa_supplicant.conf
+      exit
+   fi
+   sleep 30
+done
