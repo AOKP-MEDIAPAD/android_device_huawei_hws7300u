@@ -158,14 +158,6 @@ PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
     device/huawei/hws7300u/prebuilt/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
 
-#Wifi
-PRODUCT_COPY_FILES += \
-    device/huawei/hws7300u/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
-    device/huawei/hws7300u/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/huawei/hws7300u/prebuilt/etc/wifi/fw_bcmdhd.bin:system/etc/wifi/fw_bcmdhd.bin \
-    device/huawei/hws7300u/prebuilt/etc/wifi/fw_bcmdhd_apsta.bin:system/etc/wifi/fw_bcmdhd_apsta.bin \
-    device/huawei/hws7300u/prebuilt/etc/wifi/nvram-bcm4329.txt:system/etc/wifi/nvram-bcm4329.txt \
-
 #Bluetooth
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/bluetooth/BCM4329.hcd:system/etc/bluetooth/BCM4329.hcd \
@@ -247,6 +239,10 @@ PRODUCT_COPY_FILES += \
 # Init.d scripts
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/init.d/02extsd:system/etc/init.d/02extsd
+    device/huawei/hws7300u/prebuilt/bin/wifihack:system/bin/wifihack
+
+# Bootanimation
+PRODUCT_BOOTANIMATION := vendor/cm/prebuilt/common/bootanimation/800.zip
 
 # Misc
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -259,7 +255,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr \
     ro.qualcomm.bluetooth.dun=true \
     ro.qualcomm.bluetooth.ftp=true \
-    wifi.interface=eth0 \
+    wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=30 \
     tf.enable=y \
     media.stagefright.use-awesome=true \
