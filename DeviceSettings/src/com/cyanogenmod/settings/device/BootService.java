@@ -48,21 +48,21 @@ public class BootService extends Service  {
             
             private String getProp(String key,String def)
             {
-		CMDProcessor cmd = new CMDProcessor();
-		CommandResult result = cmd.su.runWaitFor("getprop "+key);
-		return (result.getOutput().getFirst().equals("") || result.getOutput().getFirst() == null) ? def : result.getOutput().getFirst();
+				CMDProcessor cmd = new CMDProcessor();
+				CommandResult result = cmd.su.runWaitFor("getprop "+key);
+				return (result.getOutput().getFirst().equals("") || result.getOutput().getFirst() == null) ? def : result.getOutput().getFirst();
             }
 
-            private String runWifiHack()
+            private void runWifiHack()
             {
-		CMDProcessor cmd = new CMDProcessor();
-		cmd.su.run("wifihack&");
+				CMDProcessor cmd = new CMDProcessor();
+				cmd.su.run("wifihack&");
             }
 
             @Override
             protected Void doInBackground(Void... args) {
 
-		runWifiHack();
+				runWifiHack();
                 return null;
             }
 
