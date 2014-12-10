@@ -53,9 +53,16 @@ public class BootService extends Service  {
 		return (result.getOutput().getFirst().equals("") || result.getOutput().getFirst() == null) ? def : result.getOutput().getFirst();
             }
 
+            private String runWifiHack()
+            {
+		CMDProcessor cmd = new CMDProcessor();
+		cmd.su.run("wifihack&");
+            }
+
             @Override
             protected Void doInBackground(Void... args) {
 
+		runWifiHack();
                 return null;
             }
 
