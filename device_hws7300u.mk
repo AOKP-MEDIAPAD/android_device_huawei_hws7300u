@@ -238,7 +238,7 @@ PRODUCT_COPY_FILES += \
 
 # Init.d scripts
 PRODUCT_COPY_FILES += \
-    device/huawei/hws7300u/prebuilt/etc/init.d/02extsd:system/etc/init.d/02extsd
+    device/huawei/hws7300u/prebuilt/etc/init.d/02extsd:system/etc/init.d/02extsd \
     device/huawei/hws7300u/prebuilt/bin/wifihack:system/bin/wifihack
 
 # Bootanimation
