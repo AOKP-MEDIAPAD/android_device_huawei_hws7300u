@@ -1,4 +1,4 @@
-ifneq ($(USE_CAMERA_STUB),false)
+ifneq ($(USE_CAMERA_STUB),true)
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
 ifneq ($(BUILD_TINY_ANDROID),true)
 
@@ -14,7 +14,7 @@ LOCAL_CFLAGS += -DHW_ENCODE
 # Uncomment below line to enable smooth zoom
 #LOCAL_CFLAGS += -DCAMERA_SMOOTH_ZOOM
 
-LOCAL_C_INCLUDES += system/media/camera/include
+#LOCAL_C_INCLUDES += system/media/camera/include
 
 LOCAL_SRC_FILES := \
     QualcommCamera.cpp \
