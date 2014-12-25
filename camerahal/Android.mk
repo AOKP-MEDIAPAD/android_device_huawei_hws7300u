@@ -1,4 +1,4 @@
-ifneq ($(USE_CAMERA_STUB),false)
+ifneq ($(USE_CAMERA_STUB),true)
 ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
 ifneq ($(BUILD_TINY_ANDROID),true)
 
@@ -9,7 +9,7 @@ include $(CLEAR_VARS)
 # When zero we link against libmmcamera; when 1, we dlopen libmmcamera.
 DLOPEN_LIBMMCAMERA := 1
 
-LOCAL_CFLAGS += -DHW_ENCODE
+LOCAL_CFLAGS += -DHW_ENCODE 
 
 # Uncomment below line to enable smooth zoom
 #LOCAL_CFLAGS += -DCAMERA_SMOOTH_ZOOM
@@ -27,11 +27,9 @@ LOCAL_CFLAGS += -DUSE_ION
 # 4 buffers on 7x30
 LOCAL_CFLAGS += -DNUM_PREVIEW_BUFFERS=4
 
-
-
-LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 LOCAL_C_INCLUDES += \
+    $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
     hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgralloc \
     hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgenlock \
     hardware/qcom/media/libstagefrighthw

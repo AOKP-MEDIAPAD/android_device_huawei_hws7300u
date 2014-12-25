@@ -18,7 +18,7 @@
 #define __CAMERA_H__
 
 #include <stdint.h>
-#include <media/msm_camera.h>
+#include "msm_camera.h"
 #include <pthread.h>
 #include <linux/videodev2.h>
 #include <sys/mman.h>
