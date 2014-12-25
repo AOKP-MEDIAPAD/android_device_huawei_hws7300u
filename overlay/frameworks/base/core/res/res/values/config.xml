@@ -239,7 +239,8 @@
 
     <!--  Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">5</integer>
-	
+    <bool name="config_enableMultiUserUI">true</bool>
+
     <string-array name="config_locationProviderPackageNames" translatable="false">
         <item>com.android.location.fused</item>
         <item>com.google.android.location</item>
