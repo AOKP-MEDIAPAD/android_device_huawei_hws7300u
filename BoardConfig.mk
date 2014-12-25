@@ -81,7 +81,7 @@ TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # Audio
 COMMON_GLOBAL_CFLAGS += -DQCOM_ACDB_ENABLED -DQCOM_VOIP_ENABLED
-
+BOARD_HAVE_PRE_KITKAT_AUDIO_POLICY_BLOB := true
 BOARD_USE_QCOM_LPA := true
 TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_LEGACY_ALSA_AUDIO := true
@@ -110,7 +110,6 @@ USE_CAMERA_STUB := false
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=hws7300u androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40300000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 TARGET_KERNEL_SOURCE := kernel/huawei/hws7300u
 TARGET_KERNEL_CONFIG := mediapad_defconfig
 
@@ -137,7 +136,7 @@ TARGET_RECOVERY_FSTAB := device/huawei/hws7300u/root/fstab.hws7300u
 RECOVERY_FSTAB_VERSION := 2
 
 # CWM specific
-BOARD_CUSTOM_GRAPHICS:= ../../../device/huawei/hws7300u/recovery/graphics.c
+# BOARD_CUSTOM_GRAPHICS:= ../../../device/huawei/hws7300u/recovery/graphics.c
 
 # Reduce font size
 EXTENDED_FONT_FOOTPRINT := false
