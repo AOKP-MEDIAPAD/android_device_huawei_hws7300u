@@ -24,7 +24,6 @@ include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -98,9 +97,12 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.default
-
-
+    gps.msm8660
+    
+# GPS
+PRODUCT_COPY_FILES += \
+    device/common/gps/gps.conf_US_SUPL:system/etc/gps.conf
+    
 # Power
 PRODUCT_PACKAGES += \
     power.msm8660
@@ -109,14 +111,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
-
 # QRNGD
 PRODUCT_PACKAGES += \
     qrngd
     
 # WiFi
 PRODUCT_PACKAGES += \
-    lpm.rc \
     wpa_supplicant \
     libnetcmdiface
 
@@ -260,6 +260,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.remote.autoconnect=true \
     ro.bluetooth.request.master=true \
     ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr \
+    lpa.decode=false \
     ro.qualcomm.bluetooth.dun=true \
     ro.qualcomm.bluetooth.ftp=true \
     wifi.interface=eth0 \

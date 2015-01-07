@@ -1,0 +1,10 @@
+allow init_shell vfat:dir r_dir_perms;
+allow init_shell vfat:file getattr;
+allow init_shell block_device:chr_file { read write open ioctl};
+allow init_shell modem_efs_partition_device:blk_file rw_file_perms;
+allow init_shell tmpfs:chr_file { open read write ioctl };
+allow init_shell tmpfs:blk_file { open read write };
+allow init_shell self:process execmem;
+allow init_shell rmt_device:chr_file { read write open ioctl};
+allow init_shell block_device:blk_file { ioctl};
+allow init_shell kernel:process { setsched };

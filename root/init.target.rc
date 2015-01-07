@@ -39,11 +39,11 @@ on fs
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
     wait /dev/block/mmcblk0p22
-    mount ext4 /dev/block/mmcblk0p22 /cache nosuid nodev barrier=1
+    mount ext4 /dev/block/mmcblk0p22 /cache nosuid nodev barrier=0
 
 on post-fs-data
     mkdir /tombstones 0771 system system
-    mount ext4 /dev/block/mmcblk0p24 /tombstones nosuid nodev barrier=1
+    mount ext4 /dev/block/mmcblk0p24 /tombstones nosuid nodev barrier=0
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/mdm 0771 system system
     mkdir /tombstones/lpass 0771 system system

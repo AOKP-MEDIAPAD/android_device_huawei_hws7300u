@@ -30,9 +30,9 @@ LOCAL_CFLAGS += -DNUM_PREVIEW_BUFFERS=4
 LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 LOCAL_C_INCLUDES += \
     $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
-    hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgralloc \
-    hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgenlock \
-    hardware/qcom/media/libstagefrighthw
+    hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/$(TARGET_BOARD_PLATFORM)/libgralloc \
+    hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/$(TARGET_BOARD_PLATFORM)/libgenlock \
+    hardware/qcom/media-$(TARGET_QCOM_MEDIA_VARIANT)/$(TARGET_BOARD_PLATFORM)/libstagefrighthw
 
 LOCAL_SHARED_LIBRARIES := \
     libcamera_client \

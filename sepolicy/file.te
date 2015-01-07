@@ -1,3 +1,6 @@
+type camera_sysfs, fs_type, sysfs_type;
+type vibeamp_sysfs, fs_type, sysfs_type;
+type volwake_sysfs, fs_type, sysfs_type;
+type gamma_sysfs, fs_type, sysfs_type;
 # Carrier cust type
 type cust_file, file_type;
-
