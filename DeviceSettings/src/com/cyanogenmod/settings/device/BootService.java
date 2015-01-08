@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.ServiceManager;
 import android.os.Parcel;
 import android.os.RemoteException;
+import com.cyanogenmod.settings.device.Helpers;
 import com.cyanogenmod.settings.device.CMDProcessor;
 import com.cyanogenmod.settings.device.CMDProcessor.CommandResult;
 /**
@@ -48,21 +49,52 @@ public class BootService extends Service  {
             
             private String getProp(String key,String def)
             {
-				CMDProcessor cmd = new CMDProcessor();
-				CommandResult result = cmd.su.runWaitFor("getprop "+key);
-				return (result.getOutput().getFirst().equals("") || result.getOutput().getFirst() == null) ? def : result.getOutput().getFirst();
+		CMDProcessor cmd = new CMDProcessor();
+		CommandResult result = cmd.su.runWaitFor("getprop "+key);
+		return (result.getOutput().getFirst().equals("") || result.getOutput().getFirst() == null) ? def : result.getOutput().getFirst();
             }
-
-            private void runWifiHack()
+            
+            private void updateBatteryProp()
             {
-				CMDProcessor cmd = new CMDProcessor();
-				cmd.su.run("wifihack&");
+		CMDProcessor cmd = new CMDProcessor();
+
+	 	
+	 	String cap = getProp(DeviceSettings.PROP_BATTERY_MIN_CAPACITY,"-1");
+                String vol = getProp(DeviceSettings.PROP_BATTERY_MIN_VOLT,"3500");
+                
+                Helpers.getMount("rw");
+		cmd.su.run("echo "+cap+" > /system/etc/coulometer/bq27510_min_capacity");
+		cmd.su.run("echo "+vol+" > /system/etc/coulometer/bq27510_min_volt");
+		Helpers.getMount("ro");
             }
-
-            @Override
+            
+            private void updateTouchwake()
+            {
+		CMDProcessor cmd = new CMDProcessor();
+	 	String value = getProp(DeviceSettings.PROP_TOUCHWAKE,"0");
+                cmd.su.run("echo "+value+" > /sys/class/misc/touchwake/enabled");
+                cmd.su.run("echo 90000 > /sys/class/misc/touchwake/delay");
+            }
+	    
+	    @Override
             protected Void doInBackground(Void... args) {
-
-				runWifiHack();
+			updateBatteryProp();
+			updateTouchwake();
+			if( getProp(DeviceSettings.PROP_HW_OVERLAY,"1").equals("0") )
+			{
+				try {
+							IBinder flinger = ServiceManager.getService("SurfaceFlinger");
+							if (flinger != null) {
+								Parcel data = Parcel.obtain();
+								data.writeInterfaceToken("android.ui.ISurfaceComposer");
+								final int disableOverlays = 1; 
+								data.writeInt(disableOverlays);
+								flinger.transact(1008, data, null, 0);
+								data.recycle();
+							}
+					} catch (RemoteException ex) {	
+					}
+			}
                 return null;
             }
 

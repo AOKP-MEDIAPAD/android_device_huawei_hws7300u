@@ -40,6 +40,37 @@
              android:defaultValue="true"
              android:summary="@string/summary_ext_internal"/>
 
+    <CheckBoxPreference
+             android:key="pref_touchwake"
+             android:title="@string/title_touchwake"
+             android:persistent="false"
+             android:defaultValue="false"
+             android:summary="@string/summary_touchwake"/>
+
     </PreferenceCategory>
+    
+    
+
+    <PreferenceCategory android:title="@string/title_battery">
+
+        <ListPreference
+            android:title="@string/title_battery_capacity"
+            android:key="pref_battery_capacity"
+            android:defaultValue="-1"
+            android:summary="@string/summary_battery_capacity"
+            android:entries="@array/battery_cap_names"
+            android:entryValues="@array/battery_cap_values"/>
+
+        <ListPreference
+            android:title="@string/title_battery_volt"
+            android:key="pref_battery_volt"
+            android:defaultValue="3500"
+            android:summary="@string/summary_battery_volt"
+            android:entries="@array/battery_volt_names"
+            android:entryValues="@array/battery_volt_values"/>
+
+    </PreferenceCategory>
+
+
 
 </PreferenceScreen>

@@ -138,14 +138,10 @@ RECOVERY_FSTAB_VERSION := 2
 # BOARD_CUSTOM_GRAPHICS:= ../../../device/huawei/hws7300u/recovery/graphics.c
 
 # Reduce font size
-EXTENDED_FONT_FOOTPRINT := false
-SMALLER_FONT_FOOTPRINT := true
+EXTENDED_FONT_FOOTPRINT := true
+#SMALLER_FONT_FOOTPRINT := true
 MINIMAL_FONT_FOOTPRINT := true
 
-# Remove packages
-REMOVE_PRODUCT_PACKAGES += Gallery2 Exchange2 LiveWallpapers Galaxy4 Email BasicDreams
-REMOVE_PRODUCT_PACKAGES += VisualizationWallpapers PicoTts Eleven Browser Mms Calendar
-REMOVE_PRODUCT_PACKAGES += Camera2
 # OTA
 BLOCK_BASED_OTA := false
 
@@ -157,4 +153,8 @@ BOARD_SEPOLICY_UNION += \
     file_contexts \
     file.te \
     platform_app.te 
-	
+    
+# ROM Lite
+# Remove packages
+REMOVE_PRODUCT_PACKAGES += Gallery2 Exchange Exchange2 LiveWallpapers Galaxy4 Email BasicDreams
+REMOVE_PRODUCT_PACKAGES +=  PrintSpooler Terminal VisualizationWallpapers PicoTts Eleven Browser Mms Calendar Camera2

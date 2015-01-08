@@ -18,7 +18,8 @@ LOCAL_C_INCLUDES += system/media/camera/include
 
 LOCAL_SRC_FILES := \
     QualcommCamera.cpp \
-    QualcommCameraHardware.cpp
+    QualcommCameraHardware.cpp \
+    QCameraParameters.cpp
 
 
 LOCAL_CFLAGS += -DUSE_ION

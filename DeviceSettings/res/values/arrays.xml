@@ -2,12 +2,63 @@
     
     <string-array name="dpi_names">
         <item>Default density</item>
+        <item>Max density</item>
         <item>High density</item>
     </string-array>
         
     <string-array name="dpi_values" translatable="false">
         <item>213</item>
         <item>160</item>
+        <item>180</item>
+    </string-array>
+
+
+    <string-array name="battery_cap_names">
+        <item>Disable</item>
+        <item>10%</item>
+        <item>15%</item>
+        <item>20%</item>
+        <item>25%</item>
+        <item>30%</item>
+        <item>35%</item>
+        <item>40%</item>
+        <item>45%</item>
+        <item>50%</item>
+    </string-array>
+
+    <string-array name="battery_cap_values" translatable="false">
+        <item>-1</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>  
+    </string-array>
+
+    <string-array name="battery_volt_names">
+        <item>3600mV</item>
+        <item>3500mV</item>
+        <item>3450mV</item>
+        <item>3400mV</item>
+        <item>3350mV</item>
+        <item>3300mV</item>
+        <item>3250mV</item>
+        <item>3200mV</item>
+    </string-array>
+
+    <string-array name="battery_volt_values" translatable="false">
+        <item>3600</item>
+        <item>3500</item>
+        <item>3450</item>
+        <item>3400</item>
+        <item>3350</item>
+        <item>3300</item>
+        <item>3250</item>
+        <item>3200</item>
     </string-array>
     
 </resources>
