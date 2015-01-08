@@ -1,6 +1,7 @@
 #!/system/bin/sh	
 less /data/system/extinternal | grep -q 1 || exit
 sleep 3
+mkdir -p /storage/sdcard1/0/
 mount -o remount,rw /
 mount -t vfat -o umask=0000 /dev/block/vold/179:97 /mnt/shell/emulated
 mount -o bind /data/media/0 /storage/sdcard1
