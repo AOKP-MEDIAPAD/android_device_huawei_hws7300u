@@ -48,7 +48,6 @@ BOARD_NO_WIFI_HAL := true
 
 # Bluetooth                                           `
 BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/hws7300u/bluetooth/include
 BOARD_BLUEDROID_VENDOR_CONF := device/huawei/hws7300u/bluetooth/vnd_hws7300u.txt
 
