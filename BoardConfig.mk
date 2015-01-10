@@ -139,7 +139,6 @@ RECOVERY_FSTAB_VERSION := 2
 
 # Reduce font size
 EXTENDED_FONT_FOOTPRINT := true
-#SMALLER_FONT_FOOTPRINT := true
 MINIMAL_FONT_FOOTPRINT := true
 
 # OTA
@@ -157,4 +156,4 @@ BOARD_SEPOLICY_UNION += \
 # ROM Lite
 # Remove packages
 REMOVE_PRODUCT_PACKAGES += Gallery2 Exchange Exchange2 LiveWallpapers Galaxy4 Email BasicDreams
-REMOVE_PRODUCT_PACKAGES +=  PrintSpooler Terminal VisualizationWallpapers PicoTts Eleven Browser Mms Calendar Camera2
+REMOVE_PRODUCT_PACKAGES +=  PrintSpooler Terminal VisualizationWallpapers PicoTts Eleven Mms Calendar Camera2

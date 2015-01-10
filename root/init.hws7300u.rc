@@ -470,12 +470,6 @@ on property:persist.sys.color.enhance=true
 on property:persist.sys.color.enhance=false
 	write /sys/bus/platform/drivers/lcdc_s7Pro_lvds_wxga/color_en 0
 
-service thermald /system/bin/thermald
-    class main
-    user root
-    group root
-    disabled
-
 on property:persist.thermal.monitor=true
     start thermald
 
