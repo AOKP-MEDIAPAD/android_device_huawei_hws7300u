@@ -57,6 +57,7 @@ PRODUCT_PACKAGES += \
     copybit.msm8660 \
     gralloc.msm8660 \
     hwcomposer.msm8660 \
+    memtrack.msm8660 \
     libgenlock \
     libmemalloc \
     liboverlay \
@@ -118,6 +119,7 @@ PRODUCT_PACKAGES += \
 # WiFi
 PRODUCT_PACKAGES += \
     wpa_supplicant \
+    hostapd \
     libnetcmdiface
 
 # Misc
@@ -162,6 +164,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
     device/huawei/hws7300u/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    device/huawei/hws7300u/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     device/huawei/hws7300u/prebuilt/etc/wifi/fw_bcmdhd.bin:system/etc/wifi/fw_bcmdhd.bin \
     device/huawei/hws7300u/prebuilt/etc/wifi/fw_bcmdhd_apsta.bin:system/etc/wifi/fw_bcmdhd_apsta.bin \
     device/huawei/hws7300u/prebuilt/etc/wifi/nvram-bcm4329.txt:system/etc/wifi/nvram-bcm4329.txt \

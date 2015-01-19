@@ -23,6 +23,8 @@ ARCH_ARM_HAVE_NEON := true
 ARCH_ARM_HAVE_ARMV7A := true
 
 BOARD_USES_LEGACY_MMAP := true
+MALLOC_IMPL := dlmalloc
+
 
 # Flags
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp

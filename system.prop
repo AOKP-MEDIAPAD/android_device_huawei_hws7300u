@@ -1,3 +1,5 @@
+ro.config.max_starting_bg=4
+
 # Root by default
 persist.sys.root_access=3
 
@@ -24,17 +26,17 @@ ro.ril.gprsclass=10
 ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # graphics
-debug.composition.type=dyn
+debug.composition.type=mdp
 debug.mdpcomp.maxlayer=2
-debug.mdpcomp.logs=0
+debug.mdpcomp.idletime=-1
 persist.hwc.mdpcomp.enable=true
 debug.egl.recordable.rgba8888=1
 debug.enabletr=true
 debug.sf.hw=1
 ro.opengles.version=131072
 dev.pm.dyn_samplingrate=1
-ro.bq.gpu_to_cpu_unsupported=1
 persist.sys.color.enhance=true
+persist.sys.force_highendgfx=true
 
 # system props for SD card emulation of emmc partition
 ro.emmc.sdcard.partition=23
