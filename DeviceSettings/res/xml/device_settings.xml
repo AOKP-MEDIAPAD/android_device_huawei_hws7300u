@@ -18,6 +18,14 @@
                         android:summary="@string/summary_dpi"
                         android:entries="@array/dpi_names"
                         android:entryValues="@array/dpi_values"/>
+
+    <ListPreference
+            android:title="@string/title_display_voltage"
+            android:key="pref_display_voltage"
+            android:defaultValue="213"
+            android:summary="@string/summary_display_voltage"
+            android:entries="@array/display_voltage_names"
+            android:entryValues="@array/display_voltage_values"/>
                   
     </PreferenceCategory>
     

@@ -60,5 +60,32 @@
         <item>3250</item>
         <item>3200</item>
     </string-array>
+
+
+    <string-array name="display_voltage_names">
+        <item>Default</item>
+        <item>3250mV</item>
+        <item>3200mV</item>
+        <item>3150mV</item>
+        <item>3100mV</item>
+        <item>3050mV</item>
+        <item>3000mV</item>
+        <item>2950mV</item>
+        <item>2900mV</item>
+        <item>2850mV</item>
+    </string-array>
+
+    <string-array name="display_voltage_values" translatable="false">
+        <item>3300000</item>
+        <item>3250000</item>
+        <item>3200000</item>
+        <item>3150000</item>
+        <item>3100000</item>
+        <item>3050000</item>
+        <item>3000000</item>
+        <item>2950000</item>
+        <item>2900000</item>
+        <item>2850000</item>
+    </string-array>
     
 </resources>

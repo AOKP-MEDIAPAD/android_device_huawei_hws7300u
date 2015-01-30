@@ -68,7 +68,7 @@ public class UsbdiskService extends Service {
 
                                     Log.d("UsbdiskService", "Usbdrive mount : " + usbName);
 
-                                    cmd.su.runWaitFor(
+                                    cmd.suOrSH().runWaitFor(
                                                 "mount -t vfat -o "+options +" " +usbName+" " + storage +
                                             " && mount -t ext4 -o "+options +" "+usbName+" " + storage +
                                             " && mount -t ext3 -o "+options +" "+usbName+" " + storage +
@@ -87,7 +87,7 @@ public class UsbdiskService extends Service {
                                 if(status == true )
                                 {
                                     status = false;
-                                    cmd.su.runWaitFor("umount "+storage);
+                                    cmd.suOrSH().runWaitFor("umount "+storage);
                                     Log.d("UsbdiskService", "Usbdrive umount: "+storage);
                                 }
                             }
