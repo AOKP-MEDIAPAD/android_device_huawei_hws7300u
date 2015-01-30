@@ -13,10 +13,22 @@
     <string name="summary_lcd_enhancement_color">More saturated colors</string>
 
     <string name="title_wlan_mac">Custom MAC</string>
-    <string name="summary_wlan_mac">Custom wifi mac address</string>
+    <string name="summary_wlan_mac">Custom wifi mac address. Example: 00:11:22:33:44:55</string>
 
     <string name="title_ext_internal">Swap internal and external storages</string>
     <string name="summary_ext_internal">Reboot is required for changes to take effect (use it on your own risk!)</string>
+
+    <string name="title_touchwake">Enable Touckwake</string>
+    <string name="summary_touchwake"></string>
+
+    <string name="title_battery">Battery tweaks</string>
+    <string name="title_battery_capacity">The minimum value of charge</string>
+    <string name="summary_battery_capacity">Minimum value of charge at which the tweak will be enabled</string>
+    <string name="title_battery_volt">Minimal value of voltage</string>
+    <string name="summary_battery_volt">Minimal value of voltage at which the tweak will be enabled</string>
+
+    <string name="title_display_voltage">Voltage  on  display</string>
+    <string name="summary_display_voltage">Voltage control display. Lowers consumption. Affects the rate of incorporation of the display</string>
 
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>

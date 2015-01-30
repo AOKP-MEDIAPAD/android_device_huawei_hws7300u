@@ -2,6 +2,7 @@
 
     <string-array name="dpi_names">
         <item>Стандартное разрешение</item>
+        <item>Максимальное разрешение</item>
         <item>Высокое разрешение</item>
     </string-array>
 

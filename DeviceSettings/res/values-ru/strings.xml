@@ -13,11 +13,18 @@
     <string name="summary_lcd_enhancement_color">Более насыщенные цвета</string>
 
     <string name="title_wlan_mac">Изменение MAC-адреса</string>
-    <string name="summary_wlan_mac">Задание пользовательского wifi МАС-адреса</string>
+    <string name="summary_wlan_mac">Задание пользовательского wifi МАС-адреса. Пример: 00:11:22:33:44:55</string>
 
     <string name="title_ext_internal">Поменять местами внутреннюю и внешнюю память</string>
     <string name="summary_ext_internal">Для применения изменений необходима перезагрузка (использовать на свой страх и риск!)</string>
-	
+
+
+    <string name="title_battery">Аккумулятор</string>
+    <string name="title_battery_capacity">Минимальное значение заряда</string>
+    <string name="summary_battery_capacity">Минимальное значени заряда батареи при котором будет включаться твик</string>
+    <string name="title_battery_volt">Минимальное значение напряжения</string>
+    <string name="summary_battery_volt">Минимальное значени напряжения батареи при котором будет выключаться твик</string>
+
     <string name="save">Сохранить</string>
     <string name="cancel">Отмена</string>
 

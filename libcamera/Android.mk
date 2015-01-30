@@ -11,11 +11,6 @@ DLOPEN_LIBMMCAMERA := 1
 
 LOCAL_CFLAGS += -DHW_ENCODE
 
-# Uncomment below line to enable smooth zoom
-#LOCAL_CFLAGS += -DCAMERA_SMOOTH_ZOOM
-
-#LOCAL_C_INCLUDES += system/media/camera/include
-
 LOCAL_SRC_FILES := \
     QualcommCamera.cpp \
     QualcommCameraHardware.cpp
@@ -34,7 +29,7 @@ LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 LOCAL_C_INCLUDES += \
     hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgralloc \
     hardware/qcom/display-$(TARGET_QCOM_DISPLAY_VARIANT)/libgenlock \
-    hardware/qcom/media/libstagefrighthw
+    hardware/qcom/media-$(TARGET_QCOM_DISPLAY_VARIANT)/libstagefrighthw
 
 LOCAL_SHARED_LIBRARIES := \
     libcamera_client \

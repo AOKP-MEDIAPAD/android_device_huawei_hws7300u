@@ -109,14 +109,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
-
 # QRNGD
 PRODUCT_PACKAGES += \
     qrngd
     
 # WiFi
 PRODUCT_PACKAGES += \
-    lpm.rc \
     wpa_supplicant \
     libnetcmdiface
 
@@ -258,6 +256,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr \
     ro.qualcomm.bluetooth.dun=true \
     ro.qualcomm.bluetooth.ftp=true \
+    lpa.decode=false \
     wifi.interface=eth0 \
     wifi.supplicant_scan_interval=30 \
     tf.enable=y \

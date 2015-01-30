@@ -16,5 +16,8 @@ public class Boot extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Intent service = new Intent(context, BootService.class);
         context.startService(service);
+
+        Intent usbDiskService = new Intent(context, UsbdiskService.class);
+        context.startService(usbDiskService);
     }
 }
