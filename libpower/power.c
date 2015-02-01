@@ -128,7 +128,6 @@ static void configure_governor()
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/up_threshold", "85");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/io_is_busy", "1");
         sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor", "4");
-        sysfs_write("/sys/devices/system/cpu/cpufreq/ondemand/down_differential", "10");
 
     } else if (strncmp(governor, "interactive", 11) == 0) {
         sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/min_sample_time", "90000");
