@@ -1,8 +1,3 @@
-ro.config.max_starting_bg=4
-
-# Root by default
-persist.sys.root_access=3
-
 # set default lcd density to TVDPI
 ro.sf.lcd_density=213
 
@@ -26,10 +21,11 @@ ro.ril.gprsclass=10
 ro.vendor.extension_library=/system/lib/libqc-opt.so
 
 # graphics
-debug.composition.type=mdp
-debug.mdpcomp.maxlayer=2
+debug.composition.type=dyn
+debug.mdpcomp.maxlayer=3
 debug.mdpcomp.idletime=-1
-persist.hwc.mdpcomp.enable=true
+debug.hwc.dynThreshold=1.9
+persist.hwc.mdpcomp.enable=false
 debug.egl.recordable.rgba8888=1
 debug.enabletr=true
 debug.sf.hw=1
@@ -53,7 +49,6 @@ persist.audio.fluence.mode=endfire
 persist.audio.vr.enable=false
 
 # LPA
-lpa.decode=true
 lpa.use-stagefright=true
 
 # hdmi
@@ -72,4 +67,3 @@ ro.ril.transmitpower=true
 ro.emmc.sdcard.partition=23
 persist.sys.usb.config=mtp,adb
 ro.vold.umsdirtyratio=50
-

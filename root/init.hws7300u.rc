@@ -265,6 +265,11 @@ on boot
     # Flash storage isn't a good entropy source, and only causes locking
     # overhead in the kernel. Turn it off.
     write /sys/block/mmcblk0/queue/add_random 0
+    
+    # Dummy command to open() /dev/smd0
+    # This causes smd_tty_open() in arch/arm/mach-msm/smd_tty.c to load
+    # the modem firmware early.
+    exec /system/bin/dd if=/dev/smd0 of=/dev/null bs=1 count=1 skip=1
 
 # 4.3 requires this
      chmod 0644 /proc/cmdline

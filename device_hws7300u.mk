@@ -67,6 +67,9 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.r_submix.default \
     audio.primary.msm8660 \
     audio.a2dp.default \
     audio_policy.msm8660 \
@@ -271,6 +274,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     tf.enable=y \
     media.stagefright.use-awesome=true \
     drm.service.enabled=true
+
+ADDITIONAL_BUILD_PROPERTIES += \
+    ro.config.max_starting_bg=6 \
+    persist.sys.root_access=3 \
+    ro.config.low_ram=true \
+    ro.kernel.android.checkjni=0
+
 
 # Proprietary side of the device
 $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)
