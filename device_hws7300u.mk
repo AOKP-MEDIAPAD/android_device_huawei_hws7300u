@@ -116,6 +116,7 @@ PRODUCT_PACKAGES += \
 # WiFi
 PRODUCT_PACKAGES += \
     wpa_supplicant \
+    hostapd \
     libnetcmdiface
 
 # Misc
@@ -254,14 +255,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.remote.autoconnect=true \
     ro.bluetooth.request.master=true \
     ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr \
+    lpa.decode=false \
     ro.qualcomm.bluetooth.dun=true \
     ro.qualcomm.bluetooth.ftp=true \
-    lpa.decode=false \
     wifi.interface=eth0 \
     wifi.supplicant_scan_interval=30 \
     tf.enable=y \
     media.stagefright.use-awesome=true \
     drm.service.enabled=true
+
+ADDITIONAL_BUILD_PROPERTIES += \
+    ro.config.max_starting_bg=6 \
+    persist.sys.root_access=3 \
+    ro.config.low_ram=true \
+    ro.kernel.android.checkjni=0
+
 
 # Proprietary side of the device
 $(call inherit-product-if-exists, vendor/huawei/hws7300u/hws7300u-vendor.mk)

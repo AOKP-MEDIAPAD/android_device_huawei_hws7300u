@@ -32,7 +32,7 @@ on early-init
 
 on fs
     mount_all /fstab.hws7300u
-
+    swapon_all /fstab.hws7300u
     chmod 2755 /system/bin/pcscd
 
     # Keeping following partitions outside fstab file. As user may not have
