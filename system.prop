@@ -49,7 +49,7 @@ persist.audio.fluence.mode=endfire
 persist.audio.vr.enable=false
 
 # LPA
-lpa.use-stagefright=true
+# lpa.use-stagefright=true
 
 # hdmi
 com.qc.hardware=true
