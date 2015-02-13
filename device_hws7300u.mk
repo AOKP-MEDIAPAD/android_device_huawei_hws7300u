@@ -248,8 +248,8 @@ PRODUCT_COPY_FILES += \
 
 # TWRP
 PRODUCT_COPY_FILES += \
-    device/huawei/hws7300u/root/twrp.fstab:recovery/root/etc/twrp.fstab
-
+    device/huawei/hws7300u/root/twrp.fstab:recovery/root/etc/twrp.fstab \
+    device/huawei/hws7300u/root/init.recovery.hws7300u.rc:root/init.recovery.hws7300u.rc
 # Init.d scripts
 PRODUCT_COPY_FILES += \
     device/huawei/hws7300u/prebuilt/etc/init.d/02extsd:system/etc/init.d/02extsd
