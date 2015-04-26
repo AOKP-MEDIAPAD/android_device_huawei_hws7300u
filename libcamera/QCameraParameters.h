@@ -20,7 +20,7 @@
 #ifndef __QUALCOMM_CAMERA_PARAMETERS__
 #define __QUALCOMM_CAMERA_PARAMETERS__
 
-#include <camera/CameraParameters.h>
+#include <camera/CameraParameters2.h>
 
 using namespace android;
 
@@ -39,7 +39,7 @@ struct FPSRange{
 };
 
 
-class QCameraParameters: public CameraParameters
+class QCameraParameters: public CameraParameters2
 {
 public:
     void setPreviewFrameRateMode(const char *mode);
