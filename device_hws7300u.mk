@@ -278,7 +278,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ADDITIONAL_BUILD_PROPERTIES += \
     ro.config.max_starting_bg=6 \
     persist.sys.root_access=3 \
-    ro.config.low_ram=true \
     ro.kernel.android.checkjni=0
 
 
